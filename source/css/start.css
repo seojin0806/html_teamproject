@@ -1,0 +1,67 @@
+.character_06{
+    display: block;
+    width: 750px;
+    position: absolute;
+    top: 30px;
+    animation: floationg 2.3s
+               linear 0s
+               infinite alternate;
+}
+
+@keyframes floationg {
+    0% {
+        top: 30px;
+    }
+    100%{
+        top: 55px;
+    }
+}
+
+/*로고 설정..*/
+.logo{
+    width: 450px;
+    position: absolute;
+    z-index: 10;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+/*start css 설정*/
+.start{
+    position: absolute;
+    width: 400px;
+    height: 60px;
+    display: block;
+    bottom: 0;
+    color: white;
+    left: 50%;
+    transform: translate(-50%, -100px);
+    
+    text-align: center;
+    font-size: 45px;
+    text-decoration-line: none;
+    /*폰트 설정*/
+    font-family: "Staatliches", sans-serif;
+    font-weight: 400;
+    font-style: normal;
+}
+
+.start:hover{
+    animation: scale 1.5s
+    linear 0s
+    infinite alternate;
+}
+
+.start > a{
+    line-height: 60px;
+}
+/*글자가 커졌다가 작아짐....*/
+@keyframes scale {
+    0% {
+        font-size: 45px;
+        animation-timing-function: ease;
+    }
+    100%{
+        font-size: 55px;
+    }
+}
