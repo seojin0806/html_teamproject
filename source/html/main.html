@@ -8,13 +8,81 @@
     <script src="../js/backgroundslide.js"></script>
     <link rel="stylesheet" href="../css/default.css">
     <link rel="stylesheet" href="../css/main.css">
+     <!--구글 폰트...-->
+     <link rel="preconnect" href="https://fonts.googleapis.com">
+     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+     <link href="https://fonts.googleapis.com/css2?family=Staatliches&display=swap" rel="stylesheet">  
 </head>
 <body>
     <div class="container">
+        <!--슬라이드 창-->
         <div class="slider-container">
-            <img src="../images/BackGround/01.png" class="img-slide">
-            <img src="../images/BackGround/01.png" class="img-slide">
+            <img src="../images/BackGround/01.png" class="img-slide" style="filter: blur(2px);">
+            <img src="../images/BackGround/01.png" class="img-slide" style="filter: blur(2px);">
         </div>
+       <!--골드 창..-->
+       <div class="gold-div">
+            <img src="../images/Item/item_coin.png">
+            <p>4211115G</p>
+       </div>
+       <!--시작버튼-->
+       <button class="start-btn">start...</button>
+       <!--캐릭터 선택 이미지-->
+       <div class="slider-character">
+            <div class="character">
+                <img src="../images/Character/character_01.png">
+            </div>
+            <div class="character">
+                <img src="../images/Character/character_01.png">
+            </div>
+       </div>
+       <!--좌우 슬라이드 버튼-->
+       <button class="before-btn">
+            &lang;
+        </button>
+        <button class="next-btn">
+            &rang;
+        </button>
+       <!--캐릭터 스택과 선택버튼-->
+       <div class="character-stack">
+            <button class="select">Choose</button>
+            <!--스택 창...-->
+            <!--체력 창..-->
+            <div class="stack">
+                <span><p>HP</p></span>
+                <!--스택 영역칸-->
+                <div class="stack-area">
+                    <!-- 스택은 총 3칸... -->
+                    <div class="stack-level">
+
+                    </div>
+                    <div class="stack-level">
+                        
+                    </div>
+                    <div class="stack-level" style="background-color: transparent;">
+                        
+                    </div>
+                </div>
+                <button> up</button>
+            </div>
+            <div class="stack">
+                <span><p>ATK</p></span>
+                <!--스택 영역칸-->
+                <div class="stack-area">
+                    <!-- 스택은 총 3칸... -->
+                    <div class="stack-level" style="background-color: blue;">
+
+                    </div>
+                    <div class="stack-level" style="background-color: blue;">
+                        
+                    </div>
+                    <div class="stack-level" style="background-color: transparent;">
+                        
+                    </div>
+                </div>
+                <button> up</button>
+            </div>
+       </div>
     </div>
 </body>
 </html>

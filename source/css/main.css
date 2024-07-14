@@ -1,7 +1,6 @@
 .slider{
     width: 100%;
     height: 100%;
-    background-color: yellow;
 }
 
 .slider-container > .img-slide{
@@ -10,4 +9,203 @@
     position: absolute;
     top: 0;
     bottom: 0;
+}
+
+/*골드 div*/
+.gold-div{
+    width: 250px;
+    height: 70px;
+    margin-left: 20px;
+    margin-top: 15px;
+    z-index: 50;
+    position: absolute;
+}
+
+.gold-div > img{
+    width: 70px;
+    float: left;
+    margin-right: 8px;
+}
+
+.gold-div > p{
+    height: 70px;
+    display: block;
+    line-height: 70px;
+    font-family: "Staatliches", sans-serif;
+    font-weight: 400;
+    font-style: normal;
+    font-size: 40px;
+    color: white;
+    background: linear-gradient(to right, rgba(0,0,0,0.6), rgba(255,255,255,0.6));
+}
+
+/*캐릭터 슬라이더..*/
+.slider-character{
+    width: 2250px;
+    height: 750px;
+    position: absolute;
+    overflow-x: hidden;
+}
+/**캐릭터들...**/
+.character{
+    float: left;
+    width: 750px;
+    height: 750px;
+    text-align: center;
+}
+
+.character > img{
+    width: 550px;
+    display: block;
+    margin: 0 auto;
+    animation: floationg 2.3s
+    linear 0s
+    infinite alternate;
+}
+
+/*이미지를 움직이기 위한 애니메이션..*/
+@keyframes floationg {
+    0% {
+        margin-top: 0;
+    }
+    100%{
+        margin-top: 30px;
+    }
+}
+
+button{
+    background-color: #f5c509;
+    font-family: "Staatliches", sans-serif;
+    font-weight: 400;
+    font-style: normal;
+    display: block;
+    font-size: 45px;
+    border: none;
+    color: white;
+}
+
+.start-btn{
+    width: 250px;
+    height: 70px;
+    float: right;
+    position: relative;
+    z-index: 30;
+    margin-top: 15px;
+    margin-right: 20px;
+    border-radius: 35px;
+}
+
+button:hover{
+    cursor: pointer;
+}
+
+.character-stack{
+    width: 650px;
+    height: 200px;
+    background-color: rgba(255,255,255,0.6);
+    position: absolute;
+    bottom: 0;
+    transform: translate(50px, -15px);
+    border-radius: 25px;
+}
+
+/*캐릭터 선택 버튼...*/
+.select{
+    position: absolute;
+    border-radius: 10px;
+    width: 150px;
+    height: 60px;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+/*왼쪽으로 이동 슬라이드 버튼..*/
+.before-btn{
+    width: 100px;
+    height: 100px;
+    font-size: 80px;
+    position: absolute;
+    /* (750-100) /2 750px 슬라이더 컨테이너 높이 100px 버튼 높이 <-- 즉 슬라이더 정중앙에 오게...*/
+    transform: translateY(325px);
+    background-color:transparent;
+}
+
+/* 오른쪽으로 이동 슬라이드 버튼... */
+.next-btn{
+    width: 100px;
+    height: 100px;
+    font-size: 80px;
+    position: absolute;
+    left: 0;
+    /* (750-100) /2 750px 슬라이더 컨테이너 높이 100px 버튼 높이 <-- 즉 슬라이더 정중앙에 오게...*/
+    transform: translate(650px,325px);
+    background-color:transparent;
+}
+.before-btn:hover, .next-btn:hover{
+    color: red;
+}
+
+.stack{
+    /* 총 높이 --> 85px */
+    font-family: "Staatliches", sans-serif;
+    font-weight: 400;
+    font-style: normal;
+    font-size: 40px;
+    color: white;
+    width: 650px;
+    height: 50px;
+    float: left;
+    margin-top: 35px;
+}
+
+.stack > span {
+    display: block;
+    margin-left: 20px;
+    width: 50px;
+    float: left;
+}
+
+.stack-area{
+    /* 영역-> 650px - 70px X 2 = 510px */
+    width: 510px;
+    height: 40px;
+    float: left;
+    /* 높이가 40px stack 높이가 50px  */
+    margin-top: 5px;
+}
+
+.stack > button{
+    display: block;
+    margin-right: 20px;
+    width: 50px;
+    float: left;
+    height: 50px;
+    font-size: 40px;
+    background-color: transparent;
+}
+
+.stack > button:hover{
+    color: red;
+}
+
+.stack-level{
+    width: 33%;
+    height: 100%;
+    background-color: red;
+    float: left;
+    border: 1px solid black;
+}
+
+.stack-level:first-child{
+    /* 부모의 넓이--> 100% */
+    /* stack-area 높이 너비 -> 510px 40px */
+    border-top-left-radius: 20px;
+    border-bottom-left-radius: 20px;
+    border-right: transparent;
+}
+
+.stack-level:last-child{
+    border-top-right-radius: 20px;
+    border-bottom-right-radius: 20px;
+    border-left: transparent;
 }
