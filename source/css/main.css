@@ -3,14 +3,6 @@
     height: 100%;
 }
 
-.slider-container > .img-slide{
-    display: block;
-    width: 100%;
-    position: absolute;
-    top: 0;
-    bottom: 0;
-}
-
 /*골드 div*/
 .gold-div{
     width: 250px;
@@ -45,6 +37,7 @@
     height: 750px;
     position: absolute;
     overflow-x: hidden;
+    overflow-y: hidden;
 }
 /**캐릭터들...**/
 .character{
@@ -147,31 +140,32 @@ button:hover{
 
 .stack{
     /* 총 높이 --> 85px */
-    font-family: "Staatliches", sans-serif;
+    font-family: "Do Hyeon", sans-serif;
     font-weight: 400;
     font-style: normal;
-    font-size: 40px;
+    font-size: 30px;
     color: white;
     width: 650px;
     height: 50px;
     float: left;
     margin-top: 35px;
+    line-height: 50px;
 }
 
 .stack > span {
     display: block;
     margin-left: 20px;
-    width: 50px;
+    width: 120px;
     float: left;
 }
 
 .stack-area{
-    /* 영역-> 650px - 70px X 2 = 510px */
-    width: 510px;
-    height: 40px;
+    /* 영역-> 650px - 70px - 140px = 440px */
+    width: 440px;
+    height: 34px;
     float: left;
-    /* 높이가 40px stack 높이가 50px  */
-    margin-top: 5px;
+    /* 높이가 34px stack 높이가 50px  */
+    margin-top: 8px;
 }
 
 .stack > button{
@@ -180,7 +174,7 @@ button:hover{
     width: 50px;
     float: left;
     height: 50px;
-    font-size: 40px;
+    font-size: 30px;
     background-color: transparent;
 }
 

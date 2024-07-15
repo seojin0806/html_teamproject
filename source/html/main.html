@@ -5,20 +5,49 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <script src="https://code.jquery.com/jquery-3.7.1.js"></script>
-    <script src="../js/backgroundslide.js"></script>
-    <link rel="stylesheet" href="../css/default.css">
+    <!-- slide 외부 라이브러리.. -->
+    <script src="../js/infiniteSlide.js"></script>
+    <!--배경 슬라이더 js-->
+    <script>    
+		$(function () {
+			$('.scroll').infiniteslide({
+				direction: 'down',
+				pauseonhover: false,
+                speed : 800
+			});
+		});
+    </script>
+    <script src="../js/main_slide.js"></script>
+    <script src="../js/active_modal.js"></script>
+    <link rel="stylesheet" href="../css/default2.css">
     <link rel="stylesheet" href="../css/main.css">
-     <!--구글 폰트...-->
+    <link rel="stylesheet" href="../css/modal.css">
+     <!--구글 폰트(영어)...-->
      <link rel="preconnect" href="https://fonts.googleapis.com">
      <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
      <link href="https://fonts.googleapis.com/css2?family=Staatliches&display=swap" rel="stylesheet">  
+     <!--구글 폰트(한국어)-->
+     <link rel="preconnect" href="https://fonts.googleapis.com">
+     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+     <link href="https://fonts.googleapis.com/css2?family=Do+Hyeon&display=swap" rel="stylesheet">
 </head>
 <body>
     <div class="container">
-        <!--슬라이드 창-->
         <div class="slider-container">
-            <img src="../images/BackGround/01.png" class="img-slide" style="filter: blur(2px);">
-            <img src="../images/BackGround/01.png" class="img-slide" style="filter: blur(2px);">
+            <ul class="scroll">
+                <li>
+                    <img src="../images/BackGround/01.png"></img>
+                </li>
+                <li>
+                    <img src="../images/BackGround/01.png"></img>
+                </li>
+                <li>
+                    <img src="../images/BackGround/01.png"></img>
+                </li>
+                <li>
+                    <img src="../images/BackGround/01.png"></img>
+                </li>
+            </ul>
         </div>
        <!--골드 창..-->
        <div class="gold-div">
@@ -33,7 +62,10 @@
                 <img src="../images/Character/character_01.png">
             </div>
             <div class="character">
-                <img src="../images/Character/character_01.png">
+                <img src="../images/Character/character_02.png">
+            </div>
+            <div class="character">
+                <img src="../images/Character/character_03.png">
             </div>
        </div>
        <!--좌우 슬라이드 버튼-->
@@ -49,7 +81,7 @@
             <!--스택 창...-->
             <!--체력 창..-->
             <div class="stack">
-                <span><p>HP</p></span>
+                <span><p>체력: 4</p></span>
                 <!--스택 영역칸-->
                 <div class="stack-area">
                     <!-- 스택은 총 3칸... -->
@@ -63,10 +95,10 @@
                         
                     </div>
                 </div>
-                <button> up</button>
+                <button class="active-modal"> up</button>
             </div>
             <div class="stack">
-                <span><p>ATK</p></span>
+                <span><p>공속: 0.6</p></span>
                 <!--스택 영역칸-->
                 <div class="stack-area">
                     <!-- 스택은 총 3칸... -->
@@ -80,9 +112,28 @@
                         
                     </div>
                 </div>
-                <button> up</button>
+                <button class="active-modal"> up</button>
             </div>
        </div>
+    </div>
+    <!--모달창-->
+    <div class="modal-div">
+        <img class="character-profile" src="../images/Lobby/select_character_01.png">
+        <div class="div-text">
+            <span>
+                <p class="modal-title">공속</p>
+                <p class="title-content">2 &rarr; 3</p>
+                <p class="title-gold">골드: 4211115G &rarr; 4211115G</p></span>
+        </div>
+        <div class="div-btn">
+            <button class="deactive-modal">
+                증가   
+            </button>
+            <button class="deactive-modal">
+                감소   
+            </button>
+
+        </div>
     </div>
 </body>
 </html>

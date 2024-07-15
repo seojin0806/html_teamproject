@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://code.jquery.com/jquery-3.7.1.js"></script>
+    <!--배경 슬라이더 js-->
+    <script src="../js/backgroundslide.js"></script>
+    <!-- 타이머 js -->
+    <script src="../js/timer.js"></script>
+    <!-- 거리 재기.. -->
+    <script src="../js/distance.js"></script>
+    <!--css요소....-->
+    <link rel="stylesheet" href="../css/default.css">
+    <link rel="stylesheet" href="../css/start.css"> 
+    <link rel="stylesheet" href="../css/game.css">
+    <!--구글 폰트...-->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Staatliches&display=swap" rel="stylesheet">  
+</head>
+<body>
+    <div class="container">
+        <div class="slider-container">
+            <img src="../images/BackGround/01.png" class="img-slide">
+            <img src="../images/BackGround/01.png" class="img-slide">
+        </div>
+        <!-- 점수랑 골드 창.. -->
+        <div class="content-score">
+            <div class="score">
+                <span class="total-distance"><p>122221</p></span>
+            </div>
+            <div class="score">
+                <img src="../images/Item/item_coin.png">
+                    <span class="total-coin"><p>50G</p></span>
+            </div>
+        </div>
+        <!-- 시간 -->
+        <div class="timer">
+            <span><p id="set_time">00 : 00</p></span>
+        </div>
+        <!-- 거리 -->
+        <div class="distance">
+            0m
+        </div>
+        <!-- 체력 표시칸.. -->
+         <div class="heart">
+            <div class="heart-div">
+                <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" fill="red" class="bi bi-suit-heart-fill" viewBox="0 0 16 16">
+                    <path d="M4 1c2.21 0 4 1.755 4 3.92C8 2.755 9.79 1 12 1s4 1.755 4 3.92c0 3.263-3.234 4.414-7.608 9.608a.513.513 0 0 1-.784 0C3.234 9.334 0 8.183 0 4.92 0 2.755 1.79 1 4 1"/>
+                </svg>
+                <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" fill="red" class="bi bi-suit-heart-fill" viewBox="0 0 16 16">
+                    <path d="M4 1c2.21 0 4 1.755 4 3.92C8 2.755 9.79 1 12 1s4 1.755 4 3.92c0 3.263-3.234 4.414-7.608 9.608a.513.513 0 0 1-.784 0C3.234 9.334 0 8.183 0 4.92 0 2.755 1.79 1 4 1"/>
+                </svg>
+                <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" fill="red" class="bi bi-suit-heart-fill" viewBox="0 0 16 16">
+                    <path d="M4 1c2.21 0 4 1.755 4 3.92C8 2.755 9.79 1 12 1s4 1.755 4 3.92c0 3.263-3.234 4.414-7.608 9.608a.513.513 0 0 1-.784 0C3.234 9.334 0 8.183 0 4.92 0 2.755 1.79 1 4 1"/>
+                </svg>
+                <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" fill="red" class="bi bi-suit-heart-fill" viewBox="0 0 16 16">
+                    <path d="M4 1c2.21 0 4 1.755 4 3.92C8 2.755 9.79 1 12 1s4 1.755 4 3.92c0 3.263-3.234 4.414-7.608 9.608a.513.513 0 0 1-.784 0C3.234 9.334 0 8.183 0 4.92 0 2.755 1.79 1 4 1"/>
+                </svg>
+                <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" fill="red" class="bi bi-suit-heart-fill" viewBox="0 0 16 16">
+                    <path d="M4 1c2.21 0 4 1.755 4 3.92C8 2.755 9.79 1 12 1s4 1.755 4 3.92c0 3.263-3.234 4.414-7.608 9.608a.513.513 0 0 1-.784 0C3.234 9.334 0 8.183 0 4.92 0 2.755 1.79 1 4 1"/>
+                </svg>
+                <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" fill="red" class="bi bi-suit-heart-fill" viewBox="0 0 16 16">
+                    <path d="M4 1c2.21 0 4 1.755 4 3.92C8 2.755 9.79 1 12 1s4 1.755 4 3.92c0 3.263-3.234 4.414-7.608 9.608a.513.513 0 0 1-.784 0C3.234 9.334 0 8.183 0 4.92 0 2.755 1.79 1 4 1"/>
+                </svg>
+                <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" fill="red" class="bi bi-suit-heart-fill" viewBox="0 0 16 16">
+                    <path d="M4 1c2.21 0 4 1.755 4 3.92C8 2.755 9.79 1 12 1s4 1.755 4 3.92c0 3.263-3.234 4.414-7.608 9.608a.513.513 0 0 1-.784 0C3.234 9.334 0 8.183 0 4.92 0 2.755 1.79 1 4 1"/>
+                </svg>
+                <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" fill="red" class="bi bi-suit-heart-fill" viewBox="0 0 16 16">
+                    <path d="M4 1c2.21 0 4 1.755 4 3.92C8 2.755 9.79 1 12 1s4 1.755 4 3.92c0 3.263-3.234 4.414-7.608 9.608a.513.513 0 0 1-.784 0C3.234 9.334 0 8.183 0 4.92 0 2.755 1.79 1 4 1"/>
+                </svg>
+                <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" fill="red" class="bi bi-suit-heart-fill" viewBox="0 0 16 16">
+                    <path d="M4 1c2.21 0 4 1.755 4 3.92C8 2.755 9.79 1 12 1s4 1.755 4 3.92c0 3.263-3.234 4.414-7.608 9.608a.513.513 0 0 1-.784 0C3.234 9.334 0 8.183 0 4.92 0 2.755 1.79 1 4 1"/>
+                </svg>
+                <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" fill="black" class="bi bi-suit-heart-fill" viewBox="0 0 16 16">
+                    <path d="M4 1c2.21 0 4 1.755 4 3.92C8 2.755 9.79 1 12 1s4 1.755 4 3.92c0 3.263-3.234 4.414-7.608 9.608a.513.513 0 0 1-.784 0C3.234 9.334 0 8.183 0 4.92 0 2.755 1.79 1 4 1"/>
+                </svg>
+            </div>
+         </div>
+    </div>
+</body>
+</html>

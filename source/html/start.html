@@ -5,12 +5,21 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <script src="https://code.jquery.com/jquery-3.7.1.js"></script>
+    <!-- slide 외부 라이브러리.. -->
+    <script src="../js/infiniteSlide.js"></script>
     <!--배경 슬라이더 js-->
-    <script src="../js/backgroundslide.js"></script>
+    <script>    
+		$(function () {
+			$('.scroll').infiniteslide({
+				direction: 'down',
+				pauseonhover: false,
+                speed : 800
+			});
+		});
+    </script>
     <!--css요소....-->
-    <link rel="stylesheet" href="../css/default.css">
+    <link rel="stylesheet" href="../css/default2.css">
     <link rel="stylesheet" href="../css/start.css"> 
-    <link rel="stylesheet" href="../css/main.css"> 
     <!--구글 폰트...-->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -19,8 +28,20 @@
 <body>
     <div class="container">
         <div class="slider-container">
-            <img src="../images/BackGround/01.png" class="img-slide">
-            <img src="../images/BackGround/01.png" class="img-slide">
+            <ul class="scroll">
+                <li>
+                    <img src="../images/BackGround/01.png"></img>
+                </li>
+                <li>
+                    <img src="../images/BackGround/01.png"></img>
+                </li>
+                <li>
+                    <img src="../images/BackGround/01.png"></img>
+                </li>
+                <li>
+                    <img src="../images/BackGround/01.png"></img>
+                </li>
+            </ul>
         </div>
         <img class="logo" src="../images/Title/logo.png">
         <img class="character_06" src="../images/Character/character_06.png">
