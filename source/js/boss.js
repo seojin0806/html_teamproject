@@ -5,6 +5,7 @@ function init_stage_boss(difficulty) {
     if(boss != null) { boss = null; }
 
     let meteor; // true or false
+    boss_img_tag = document.querySelector('#boss_img');
     
     if(difficulty < 3)
         meteor = false;
@@ -18,8 +19,16 @@ function init_stage_boss(difficulty) {
         패턴2 : meteor,
         attack_pattern_1_timer_id : null, // summon dragons pattern
         attack_pattern_2_timer_id : null, // meteor fall pattern
-        //coordinate : [보스의 x좌표, 보스의 y좌표] // 없어도 될지도...
+        top : 보스가위치할y좌표 - boss_img_tag.offsetHeight/2,
+        left : 보스가위치할x좌표 - boss_img_tag.offsetWidth/2
     }
+    $('#boss_img').attr('src', boss.shape);
+    $('#boss_img').css({
+        left: boss.left,
+        top: 0 - boss_img_tag.offsetHeight
+    });
+    $('#boss_img').css('transform', 'translatey(' + boss.top + 'px)');// 화면 밖(화면 상단)에서 아래로 내려오는 애니메이션
+    $('#boss_img').css('transition', '0.5s');
 
     if(boss.패턴1)
        boss.attack_pattern_1_timer_id = setInterval(summon_dragons , (15 - 1.5 * difiiculty) * 1000); // interval : (15-1.5n) sec
@@ -30,4 +39,3 @@ function init_stage_boss(difficulty) {
     time_limit = 60;
     setTimeout(time_limit_timer, 1000);
 }
-
