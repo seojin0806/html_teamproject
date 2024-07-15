@@ -58,3 +58,25 @@ function time_limit_timer() {
         clear_stage(); // 보스 몬스터 처치
     }
 }
+
+function meteor_fall() {
+    way = Math.floor(Math.random() * 100 % 5); // 운석이 안떨어지는 위치
+    $('.meteor').css('display', 'none');
+    for (let i = 0; i < 5; ++i) {
+        if ($('.meteor')[i].classList.contains('active')) {
+            $('.meteor')[i].classList.remove('active');
+            setTimeout(meteorfunc, 1000);
+        }
+        else {
+            if(i != way )  $('.meteor')[i].style.display = 'block';
+            $('.meteor')[i].classList.add('active');
+        }
+    } 
+}
+
+function meteorfunc() {
+    for (let i = 0; i < 5; ++i) {
+        if(i != way )  $('.meteor')[i].style.display = 'block';
+        $('.meteor')[i].classList.add('active');
+    }
+}
