@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <!--Player.css-->
+    <link rel="stylesheet" href="../css/Player.css">
+    <!--jQuery-->
+    <script src="https://code.jquery.com/jquery-3.7.1.js"></script>
+    <!--PlayerMove.js-->
+    <script src="../js/PlayerMove.js"></script>
+    <!--PlayerAttack.js-->
+    <script src="../js/PlayerAttack.js"></script>
+</head>
+
+<body>
+    <!--플레이어 이동 관련 / div id를 쓰지 않음. 삭제할거면 해-->
+    <div id="playerImg" draggable="true">
+        <img id="ingame_player" class="wing">
+        <canvas id="wing1" class="wing"></canvas>
+        <canvas id="wing2" class="wing"></canvas>
+        <div id="cloneWICHI"></div>
+    </div>
+
+    <!--플레이어 공격(투사체) 관련-->
+    <div id="playerAttack">
+        <img id="arrow">
+        <!--div id="cloneWICHI"></div-->
+    </div>
+
+</body>
+
+</html>
