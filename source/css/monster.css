@@ -1,0 +1,115 @@
+#container{
+    width: 600px;
+    height: 920px;
+    overflow: hidden;
+}
+
+.monster {
+    position: relative; /* 부모 컨테이너 */
+    width: 105px;
+    height: 130px;
+    display: inline-block;
+    animation : go_down 3s;
+}
+
+.sprite-1 {
+    background-image: url('../images/Monsters/dragon_01.png');
+}
+.sprite-2 {
+    background-image: url('../images/Monsters/dragon_02.png');
+}
+.sprite-3 {
+    background-image: url('../images/Monsters/dragon_03.png');
+}
+
+.empty_enemy {
+    width: 105px;
+    height: 130px;
+    display: inline-block;
+    animation : go_down 3s;
+}
+
+
+.body {
+    width: 86px;
+    height: 128px;
+    background-position: 0 0;
+    position: absolute; /* 절대 위치 */
+    top: 0px; /* 부모 기준으로 상단 */
+    left: 10px; /* 부모 기준으로 좌측 */
+}
+
+/* 날개 */
+.wing-left {
+    width: 43px;
+    height: 69px;
+    background-position: -83px -60px;
+    position: absolute; /* 절대 위치 */
+    top: 13px; /* 원하는 위치 */
+    left: 0px; /* 원하는 위치 */
+    animation : left_fly 0.8s infinite ;
+    transform-origin: bottom right;
+}
+
+.wing-right {
+    width: 43px;
+    height: 69px;
+    background-position: -83px -60px;
+    position: absolute; /* 절대 위치 */
+    top: 13px; /* 원하는 위치 */
+    left: 20px; /* 원하는 위치 */
+    animation : right_fly 0.8s infinite ;
+    transform-origin: bottom right;
+}
+
+.eyes-left {
+    width: 29px;
+    height: 27px;
+    background-position: -99px -24px;
+    position: absolute;
+    top: 56px; /* 원하는 위치 */
+    left: 25px; /* 원하는 위치 */
+}
+
+.eyes-right {
+    width: 29px;
+    height: 27px;
+    background-position: -99px -24px;
+    position: absolute;
+    transform: scaleX(-1); /* 이미지 좌우반전 */
+    top: 56px; /* 원하는 위치 */
+    left: 50px; /* 원하는 위치 */
+}
+
+@keyframes left_fly {
+    0% {
+        transform: rotate(0deg);
+    }
+    50% {
+        transform: rotate(-30deg);
+    }
+    100% {
+        transform: rotate(0deg);
+    }
+}
+
+@keyframes right_fly {
+    0% {
+        transform: scaleX(-1) rotate(0deg);
+    }
+    50% {
+        transform: scaleX(-1) rotate(-30deg);
+    }
+    100% {
+        transform: scaleX(-1) rotate(0deg);
+    }
+}
+
+@keyframes go_down {
+    0% {
+    }
+    100% {
+        transform: translateY(900px);
+        transition-property: all; 
+    }
+}
