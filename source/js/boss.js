@@ -39,3 +39,18 @@ function init_stage_boss(difficulty) {
     time_limit = 60;
     setTimeout(time_limit_timer, 1000);
 }
+
+function time_limit_timer() {
+    if(boss !== null && time_limit > 0) {
+        time_limit--;
+        $('#time_limit').css('display', 'block');
+        $('#time_limit > span').text(time_limit);
+        setTimeout(time_limit_timer, 1000);
+    }else if(time_limit == 0 ) {
+        $('#time_limit').css('display', 'none');
+        game_over(); // 플레이어 패배
+    }else if(boss == null) {
+        $('#time_limit').css('display', 'none');
+        clear_stage(); // 보스 몬스터 처치
+    }
+}
