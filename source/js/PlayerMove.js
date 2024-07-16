@@ -1,21 +1,15 @@
+var PlayerStatus = JSON.parse(localStorage.getItem("PlayerStatus"));
+$(document).ready(function () {
 
-//playerNum 값에 따라 캐릭터 이미지 바뀜. 근데 1~9까지만 해야함.
-var playerNum = 2;
-
-window.onload = function () {
-    //var ingame_player = document.querySelector('#ingame_player');
-    //ingame_player.src = "../images/Heroes/sunny_01.png";
-
-    //Cut_Player_Img(ingame_player.src);
-
+    // playerNum 변수는 테스트를 위한 임시 값
+    var playerNum = 2;
     PlayerChoice(playerNum);
 
     mouseLocation();
-}
+});
 function PlayerChoice(playerNum){
     let ingame_player = document.querySelector('#ingame_player');
-    ingame_player.src = "../images/Heroes/sunny_0" + playerNum +".png";
-
+    ingame_player.src = PlayerStatus[playerNum].ingame_src;
     Cut_Player_Img(ingame_player.src);
 }
 

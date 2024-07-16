@@ -1,0 +1,18 @@
+{
+    "1": {
+        "HP": 3,
+        "Speed": 1,
+        "ingame_src" : "../images/Heroes/sunny_01.png"
+    },
+    "2": {
+        "HP": 4,
+        "Speed": 2,
+        "ingame_src" : "../images/Heroes/sunny_01.png"
+        
+    },
+    "3": {
+        "HP": 5,
+        "Speed": 3,
+        "ingame_src" : "../images/Heroes/sunny_01.png"
+    }
+}

@@ -1,4 +1,16 @@
-var reloadCount = 4;
+/*
+아래 로컬에서 불러올때 currentplayer의 값이 고정되는 것이 우려됨.
+고민할 것
+
+
+*/
+
+
+var PlayerStatus = JSON.parse(localStorage.getItem("PlayerStatus"));
+var CurrentPlayer = JSON.parse(localStorage.getItem("player_info"));
+// playerNum 변수는 테스트를 위한 임시 값
+var playerNum = 2;
+var reloadCount = CurrentPlayer[current_player];
 var speed = reloadCount;
 var idNum = 0;
 var reloading = 800-190*reloadCount+10.5*reloadCount**2;
@@ -10,7 +22,7 @@ $(document).ready(function () {
         Clone_Arrow();
         idNum++;
     },reloading);
-
+    
 });
 
 function Clone_Arrow(){
@@ -44,7 +56,7 @@ function Clone_Arrow(){
         // 3. 보스 몬스터와 충돌했을 때
 
         // 4. 캐릭터의 채력이 0이 되었을 때
-
+        
     }, 10 - (1.5 * speed));
     
 }
