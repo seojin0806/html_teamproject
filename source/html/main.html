@@ -19,6 +19,7 @@
     </script>
     <script src="../js/main_slide.js"></script>
     <script src="../js/active_modal.js"></script>
+    <!-- CSS 부분 -->
     <link rel="stylesheet" href="../css/default2.css">
     <link rel="stylesheet" href="../css/main.css">
     <link rel="stylesheet" href="../css/modal.css">
@@ -31,7 +32,7 @@
      <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
      <link href="https://fonts.googleapis.com/css2?family=Do+Hyeon&display=swap" rel="stylesheet">
 </head>
-<body oncontextmenu="return false" ondragstart="return false" onselectstart="return false">
+<body>
     <div class="container">
         <div class="slider-container">
             <ul class="scroll">
@@ -52,14 +53,14 @@
        <!--골드 창..-->
        <div class="gold-div">
             <img src="../images/Item/item_coin.png">
-            <p>4211115G</p>
+            <p id="gold-displayer"></p>
        </div>
        <!--시작버튼-->
        <button class="start-btn">start...</button>
        <!--캐릭터 선택 이미지-->
        <div class="slider-character">
             <div class="character">
-                <img src="../images/Character/character_01.png" style="width: 400px; height: auto;">
+                <img src="../images/Character/character_01.png">
             </div>
             <div class="character">
                 <img src="../images/Character/character_02.png">
@@ -135,5 +136,8 @@
 
         </div>
     </div>
+
+    <!-- 골드 DB 연결. -->
+    <script src="../js/gold.js"></script>
 </body>
 </html>
