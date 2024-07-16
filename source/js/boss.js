@@ -1,6 +1,7 @@
 var boss = null;
 var time_limit;
 var way;
+
 function init_stage_boss(difficulty) {
     if (boss != null) { boss = null; }
 
@@ -41,22 +42,18 @@ function init_stage_boss(difficulty) {
 }
 
 function time_limit_timer() {
-    if (boss !== null && time_limit > 0) {
+    console.log('boss HP : ' + boss.HP);
+    if ( boss != null && boss.HP <= 0) {
+        clear_stage(); // 보스 몬스터 처치
+    } else if (boss !== null && time_limit > 0) {
         time_limit--;
         $('#time_limit').css('display', 'block');
         $('#time_limit > span').text(time_limit);
         setTimeout(time_limit_timer, 1000);
     } else if (time_limit == 0) {
-        $('#time_limit').css('display', 'none');
-        clearInterval(boss.attack_pattern_1_timer_id);
-        clearInterval(boss.attack_pattern_2_timer_id);
+        delete_boss();
         game_over(); // 플레이어 패배
-    } else if (boss == null) {
-        $('#time_limit').css('display', 'none');
-        clearInterval(boss.attack_pattern_1_timer_id);
-        clearInterval(boss.attack_pattern_2_timer_id);
-        clear_stage(); // 보스 몬스터 처치
-    }
+    } 
 }
 
 function meteor_fall() {
