@@ -5,36 +5,37 @@
 
 /*골드 div*/
 .gold-div{
-    width: 250px;
-    height: 70px;
+    width: 180px;
+    height: 35px;
     margin-left: 20px;
     margin-top: 15px;
-    z-index: 50;
-    position: absolute;
+    z-index: 3;
+    position: relative;
+    float: left;
+    background: linear-gradient(to right, rgba(0,0,0,0.6), rgba(255,255,255,0.6));
 }
 
 .gold-div > img{
-    width: 70px;
+    width: 35px;
+    display: block;
     float: left;
     margin-right: 8px;
 }
 
 .gold-div > p{
-    height: 70px;
-    display: block;
-    line-height: 70px;
     font-family: "Staatliches", sans-serif;
     font-weight: 400;
     font-style: normal;
-    font-size: 40px;
+    font-size: 23px;
     color: white;
-    background: linear-gradient(to right, rgba(0,0,0,0.6), rgba(255,255,255,0.6));
+    letter-spacing: 3px;
 }
 
 /*캐릭터 슬라이더..*/
 .slider-character{
-    width: 2250px;
-    height: 750px;
+    /* 550px * 3 */
+    width: 300%;
+    height: 550px;
     position: absolute;
     overflow-x: hidden;
     overflow-y: hidden;
@@ -42,8 +43,8 @@
 /**캐릭터들...**/
 .character{
     float: left;
-    width: 750px;
-    height: 750px;
+    width: 550px;
+    height: 550px;
     text-align: center;
 }
 
@@ -72,20 +73,23 @@ button{
     font-weight: 400;
     font-style: normal;
     display: block;
-    font-size: 45px;
     border: none;
     color: white;
 }
 
 .start-btn{
-    width: 250px;
-    height: 70px;
+    width: 100px;
+    height: 40px;
     float: right;
     position: relative;
     z-index: 30;
     margin-top: 15px;
     margin-right: 20px;
-    border-radius: 35px;
+    border-radius: 20px;
+    font-size: 28px;
+    font-weight: 500;
+    line-height: 40px;
+    letter-spacing: 1px;
 }
 
 button:hover{
@@ -93,12 +97,12 @@ button:hover{
 }
 
 .character-stack{
-    width: 650px;
+    width: 500px;
     height: 200px;
     background-color: rgba(255,255,255,0.6);
     position: absolute;
     bottom: 0;
-    transform: translate(50px, -15px);
+    transform: translate(25px, -15px);
     border-radius: 25px;
 }
 
@@ -106,32 +110,33 @@ button:hover{
 .select{
     position: absolute;
     border-radius: 10px;
-    width: 150px;
-    height: 60px;
+    width: 130px;
+    height: 45px;
     left: 50%;
     transform: translate(-50%, -50%);
+    font-size: 35px;
+    letter-spacing: 2px;
 }
 
 /*왼쪽으로 이동 슬라이드 버튼..*/
 .before-btn{
-    width: 100px;
-    height: 100px;
-    font-size: 80px;
+    width: 80px;
+    height: 80px;
+    font-size: 70px;
     position: absolute;
-    /* (750-100) /2 750px 슬라이더 컨테이너 높이 100px 버튼 높이 <-- 즉 슬라이더 정중앙에 오게...*/
-    transform: translateY(325px);
+    /* (650-80) /2 650px 슬라이더 컨테이너 높이 80px 버튼 높이 <-- 즉 슬라이더 정중앙에 오게...*/
+    transform: translateY(285px);
     background-color:transparent;
 }
 
 /* 오른쪽으로 이동 슬라이드 버튼... */
 .next-btn{
-    width: 100px;
-    height: 100px;
-    font-size: 80px;
+    width: 80px;
+    height: 80px;
+    font-size: 70px;
     position: absolute;
-    left: 0;
-    /* (750-100) /2 750px 슬라이더 컨테이너 높이 100px 버튼 높이 <-- 즉 슬라이더 정중앙에 오게...*/
-    transform: translate(650px,325px);
+    /* (650-80) /2 650px 슬라이더 컨테이너 높이 80px 버튼 높이 <-- 즉 슬라이더 정중앙에 오게...*/
+    transform: translate(470px,285px);
     background-color:transparent;
 }
 .before-btn:hover, .next-btn:hover{
@@ -143,9 +148,9 @@ button:hover{
     font-family: "Do Hyeon", sans-serif;
     font-weight: 400;
     font-style: normal;
-    font-size: 30px;
+    font-size: 27px;
     color: white;
-    width: 650px;
+    width: 550px;
     height: 50px;
     float: left;
     margin-top: 35px;
@@ -155,13 +160,13 @@ button:hover{
 .stack > span {
     display: block;
     margin-left: 20px;
-    width: 120px;
+    width: 100px;
     float: left;
 }
 
 .stack-area{
-    /* 영역-> 650px - 70px - 140px = 440px */
-    width: 440px;
+    /* 영역-> 500px - 60px - 120px = 320px */
+    width: 320px;
     height: 34px;
     float: left;
     /* 높이가 34px stack 높이가 50px  */
@@ -171,11 +176,12 @@ button:hover{
 .stack > button{
     display: block;
     margin-right: 20px;
-    width: 50px;
+    width: 40px;
     float: left;
-    height: 50px;
-    font-size: 30px;
+    height: 40px;
     background-color: transparent;
+    font-size: 27px;
+    line-height: 50px;
 }
 
 .stack > button:hover{

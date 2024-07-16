@@ -16,7 +16,7 @@ function slide_right() {
     // 만약 인덱스가 1이 아니라면
     if(index != 1){
         $('.slider-character').animate({
-            left : '+=750'
+            left : '+=550'
         })
         console.log('이동합니다..');
         index--;
@@ -27,7 +27,7 @@ function slide_right() {
     //만약 마지막 인덱스가 아니라면..
     if(index != 3){
         $('.slider-character').animate({
-            left: '-=750'
+            left: '-=550'
         })
         index++;
     }

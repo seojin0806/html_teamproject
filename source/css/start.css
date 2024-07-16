@@ -1,8 +1,9 @@
 .character_06{
     display: block;
-    width: 750px;
+    width: 100%;
+    height: auto;
     position: absolute;
-    top: 30px;
+    transform: translateY(120px);
     animation: floationg 2.3s
                linear 0s
                infinite alternate;
@@ -13,17 +14,19 @@
         top: 30px;
     }
     100%{
-        top: 55px;
+        top: 70px;
     }
 }
 
 /*로고 설정..*/
 .logo{
-    width: 450px;
-    position: absolute;
-    z-index: 10;
-    left: 50%;
-    transform: translateX(-50%);
+    display: block;
+    width: 350px;
+    height: 200px;
+    position: relative;
+    margin: 0 auto;
+    margin-top: 25px;
+    z-index: 3;
 }
 
 /*start css 설정*/

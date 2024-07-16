@@ -4,13 +4,14 @@
 }
 
 .container{
-    /*1칸의 널이는 150px */
+    /*1칸의 넓이는 150px */
     
-    width: 750px;
+    width: 600px;
     height: 100vh;
     margin: 0 auto;
     position: relative;
     overflow: hidden;
+    background-color: black;
 }
 .slider-container > .img-slide{
     display: block;
