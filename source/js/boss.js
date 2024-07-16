@@ -77,3 +77,25 @@ function meteorfunc() {
         $('.meteor')[i].classList.add('active');
     }
 }
+
+function delete_boss() {
+    console.log("boss : " + boss);
+    if(null != boss.attack_pattern_1_timer_id)
+        clearInterval(boss.attack_pattern_1_timer_id);
+    if(null != boss.attack_pattern_2_timer_id)
+        clearInterval(boss.attack_pattern_2_timer_id);
+    $('#time_limit').css('display', 'none');
+    boss = null;
+    time_limit = null;
+    way = null;
+}
+function clear_stage() {
+    // 보스 처치 모션 추가
+    let boss_img_tag = document.querySelector('#boss_img');
+    boss_img_tag.classList.add('fadeout')
+    delete_boss();
+    gold = gold + 100 * difficulty
+    if(difficulty < 5) {
+        difficulty++;
+    }
+}
