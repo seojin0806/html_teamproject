@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://code.jquery.com/jquery-3.7.1.js"></script>
+    <!-- slide 외부 라이브러리.. -->
+    <script src="../js/infiniteSlide.js"></script>
+    <!--배경 슬라이더 js-->
+    <script>    
+		$(function () {
+			$('.scroll').infiniteslide({
+				direction: 'down',
+				pauseonhover: false,
+                speed : 800
+			});
+		});
+    </script>
+    <!--css요소....-->
+    <link rel="stylesheet" href="../css/default2.css">
+    <link rel="stylesheet" href="../css/end.css"> 
+    <!--구글 폰트...-->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Staatliches&display=swap" rel="stylesheet">  
+     <!--구글 폰트(한국어)-->
+     <link rel="preconnect" href="https://fonts.googleapis.com">
+     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+     <link href="https://fonts.googleapis.com/css2?family=Do+Hyeon&display=swap" rel="stylesheet">
+</head>
+<body oncontextmenu="return false" ondragstart="return false" onselectstart="return false">
+    <div class="container">
+        <div class="slider-container">
+            <ul class="scroll">
+                <li>
+                    <img src="../images/BackGround/01.png"></img>
+                </li>
+                <li>
+                    <img src="../images/BackGround/01.png"></img>
+                </li>
+                <li>
+                    <img src="../images/BackGround/01.png"></img>
+                </li>
+                <li>
+                    <img src="../images/BackGround/01.png"></img>
+                </li>
+            </ul>
+        </div>
+        <div class="end-title">
+            <p>Result</p>
+        </div>
+        <div class="end-character">
+            <img src="../images/SD/sd_03.png">
+        </div>
+        <div class="end-summary">
+            <div class="distance">
+                <span><p>비행 거리</p><p>1000M</p></span>
+            </div>
+            <div class="score-gold">
+                <div class="content">
+                    <span><p>점수</p><p>골드</p></span>
+                </div>
+                <div>
+                    <span><p>11200M</p><p>50G</p></span>
+                </div>
+            </div>
+        </div>
+        <div class="button-content">
+            <div class="gradient">
+                <div class="store-title"><p>상점</p></div>
+                <div class="money">1150G</div>
+            </div>
+            <div>
+                <div class="restart gradient"><p>재시작</p></div>
+                <div class="end gradient"><p>종료</p></div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
