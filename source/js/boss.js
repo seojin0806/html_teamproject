@@ -6,7 +6,8 @@ function init_stage_boss(difficulty) {
     if (boss != null) { boss = null; }
 
     let meteor; // true or false
-    boss_img_tag = document.querySelector('#boss_img');
+    let field = document.querySelector('.container');
+    let boss_img_tag = document.querySelector('#boss_img');
 
     if (difficulty < 3)
         meteor = false;
@@ -20,16 +21,16 @@ function init_stage_boss(difficulty) {
         패턴2: meteor,
         attack_pattern_1_timer_id: null, // summon dragons pattern
         attack_pattern_2_timer_id: null, // meteor fall pattern
-        top: 보스가위치할y좌표 - boss_img_tag.offsetHeight / 2,
-        left: 보스가위치할x좌표 - boss_img_tag.offsetWidth / 2
     }
     $('#boss_img').attr('src', boss.shape);
+    boss.top= 0 - boss_img_tag.offsetHeight / 2; //보스가위치할y좌표 - boss_img_tag.offsetHeight / 2;
+    boss.left= field.offsetWidth/2 - boss_img_tag.offsetWidth / 2; //보스가위치할x좌표 - boss_img_tag.offsetWidth / 2;
     $('#boss_img').css({
         left: boss.left,
-        top: 0 - boss_img_tag.offsetHeight
+        top: 0 - boss_img_tag.offsetHeight,
+        transform: 'translatey(' + (0 - boss.top) + 'px)',
+        transition: '0.5s'
     });
-    $('#boss_img').css('transform', 'translatey(' + boss.top + 'px)');// 화면 밖(화면 상단)에서 아래로 내려오는 애니메이션
-    $('#boss_img').css('transition', '0.5s'); // 보스 내려오는 시간 조절하기
 
     if (boss.패턴1)
         boss.attack_pattern_1_timer_id = setInterval(summon_dragons, (15 - 1.5 * difiiculty) * 1000); // interval : (15-1.5n) sec
@@ -80,7 +81,6 @@ function meteorfunc() {
 }
 
 function delete_boss() {
-    console.log("boss : " + boss);
     if(null != boss.attack_pattern_1_timer_id)
         clearInterval(boss.attack_pattern_1_timer_id);
     if(null != boss.attack_pattern_2_timer_id)
