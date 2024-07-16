@@ -1,36 +1,50 @@
-// 투사체 발사와 발사 속도만 조정
-// 캐릭터를 따라다니면서 발사하는 것은 PlayerMove에서 조정
-var speed = 3;
+var reloadCount = 4;
+var speed = reloadCount;
 var idNum = 0;
-$(document).ready(function(){
-    var arrow = document.querySelector('#arrow');
-    arrowImg(arrow);
+var reloading = 800-190*reloadCount+10.5*reloadCount**2;
 
-    LaunchArrow_Move();
+$(document).ready(function () {
+    console.log("reloading: " + reloading);
+    setInterval(function () {
+        
+        Clone_Arrow();
+        idNum++;
+    },reloading);
+
 });
 
-function arrowImg(arrow){
-    arrow.src = "../images/Sfx/invincible_02.png";
-}
-
-function LaunchArrow_Move(){
+function Clone_Arrow(){
+    // 플레이어의 현재 좌표
+    let Location_Top = $("#ArrowPosition").position().top;
+    let Location_Left = $("#ArrowPosition").position().left;
+    let arrowID = "cloneArrow" + idNum;
     let count = 0;
-    setInterval(function(){
+    $("#ArrowPosition").clone().appendTo("#ClonePosition").attr("id", arrowID).attr("class", "arrow");
+    $("#"+arrowID).css({
+        "top": Location_Top, 
+        "left": Location_Left + 9
+    });
 
-        $('#arrow').css({
-            top: $("#arrow").position().top - 2
+
+    setInterval(function () {
+        // arrowLocate는 현재 투사체의 위치.
+        var arrowLocate = Location_Top - (2 * count);
+        $("#"+arrowID).css({
+            top: arrowLocate
         });
         count++;
-        if(count > 80-(7*speed)){
-            console.log("복제됨");
-            LaunchArrow_clone();
-            count = 0;
+        // 투사체 삭제 이벤트, 천장에 닿았거나 몬스터에 충돌했을 때를 가정
+        // 1. 천장에 닿았을 때
+        if(arrowLocate < 50){
+            //해당 개체 삭제하는 이벤트 추가하기
+            $("#"+arrowID).remove();
         }
-    }, 10-(1.5*speed));
+        // 2. 일반 몬스터와 충돌했을 때
 
-}
+        // 3. 보스 몬스터와 충돌했을 때
 
-function LaunchArrow_clone(){
-    //유연한 복제 고민하기
-    $("#arrow").clone().appendTo("#cloneWICHI");
+        // 4. 캐릭터의 채력이 0이 되었을 때
+
+    }, 10 - (1.5 * speed));
+    
 }
