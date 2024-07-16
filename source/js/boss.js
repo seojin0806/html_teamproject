@@ -65,13 +65,14 @@ function meteor_fall() {
             setTimeout(meteorfunc, 1000);
         }
         else {
-            if(i != way )  $('.meteor')[i].style.display = 'block';
-            $('.meteor')[i].classList.add('active');
+            setTimeout(meteorfunc, 1000);
         }
     } 
 }
 
 function meteorfunc() {
+    let temp = setInterval(collision_detection, 100);
+    setTimeout(() => {clearInterval(temp)}, 5 * 1000);
     for (let i = 0; i < 5; ++i) {
         if(i != way )  $('.meteor')[i].style.display = 'block';
         $('.meteor')[i].classList.add('active');
@@ -97,5 +98,23 @@ function clear_stage() {
     gold = gold + 100 * difficulty
     if(difficulty < 5) {
         difficulty++;
+    }
+}
+function collision_detection() {
+    let hero = document.querySelector('#hero').getBoundingClientRect();
+    hero_coordinate = [[hero.left, hero.top], [hero.right, hero.bottom], [hero.right, hero.top], [hero.left, hero.bottom]];
+
+    for (let j = 0; j < 5; ++j) {
+        let t = document.querySelectorAll('#row > div > img')[j].getBoundingClientRect().top
+        let b = document.querySelectorAll('#row > div > img')[j].getBoundingClientRect().bottom
+        let l = document.querySelectorAll('#row > div > img')[j].getBoundingClientRect().left
+        let r = document.querySelectorAll('#row > div > img')[j].getBoundingClientRect().right
+        for (let i = 0; i < 4; ++i) {
+            if (l <= hero_coordinate[i][0] && hero_coordinate[i][0] <= r) {
+                if (t <= hero_coordinate[i][1] && hero_coordinate[i][1] <= b) {
+                    console.log('충돌발생');
+                }
+            }
+        }
     }
 }
