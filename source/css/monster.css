@@ -2,16 +2,25 @@
     width: 600px;
     height: 920px;
     overflow: hidden;
+    position: relative;
 }
 
-.monster {
-    position: relative; /* 부모 컨테이너 */
-    width: 105px;
-    height: 130px;
-    display: inline-block;
+.line{
+    width: 100%;
+    height: 150;
+    display: inline;
+    position: absolute;
     animation : go_down 3s;
 }
 
+/*----몬스터 및 빈 몬스터의 부모 div css 설정----*/
+.monster {
+    position: relative;
+    width: 105px;
+    height: 130px;
+    display: inline-block;
+    
+}
 .sprite-1 {
     background-image: url('../images/Monsters/dragon_01.png');
 }
@@ -21,15 +30,16 @@
 .sprite-3 {
     background-image: url('../images/Monsters/dragon_03.png');
 }
-
 .empty_enemy {
     width: 105px;
     height: 130px;
     display: inline-block;
-    animation : go_down 3s;
+    
 }
+/*--------------------끝-------------------*/
 
-
+/*---------몬스터 형체 생성-----------*/
+/*몸통*/
 .body {
     width: 86px;
     height: 128px;
@@ -38,7 +48,6 @@
     top: 0px; /* 부모 기준으로 상단 */
     left: 10px; /* 부모 기준으로 좌측 */
 }
-
 /* 날개 */
 .wing-left {
     width: 43px;
@@ -50,7 +59,6 @@
     animation : left_fly 0.8s infinite ;
     transform-origin: bottom right;
 }
-
 .wing-right {
     width: 43px;
     height: 69px;
@@ -61,7 +69,7 @@
     animation : right_fly 0.8s infinite ;
     transform-origin: bottom right;
 }
-
+/*눈*/
 .eyes-left {
     width: 29px;
     height: 27px;
@@ -70,7 +78,6 @@
     top: 56px; /* 원하는 위치 */
     left: 25px; /* 원하는 위치 */
 }
-
 .eyes-right {
     width: 29px;
     height: 27px;
@@ -80,6 +87,8 @@
     top: 56px; /* 원하는 위치 */
     left: 50px; /* 원하는 위치 */
 }
+/*-------------몬스터 형체 생성 끝---------------*/
+
 
 @keyframes left_fly {
     0% {
@@ -109,7 +118,7 @@
     0% {
     }
     100% {
-        transform: translateY(900px);
+        transform: translateY(910px);
         transition-property: all; 
     }
 }

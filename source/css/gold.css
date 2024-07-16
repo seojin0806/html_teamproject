@@ -1,0 +1,18 @@
+.gold {
+    position: absolute;
+    width: 64px;
+    height: 64px;
+    background-image: url('../images/Item/item_coin.png');
+    
+}
+
+@keyframes drop {
+    0% {
+    }
+    20%{
+       
+    }
+    100% {
+        
+    }
+}
