@@ -1,15 +1,8 @@
-#playerImg {
+#playerImg, #playerAttack {
     margin: 0px;
     border: 0px;
     padding: 0px;
 }
-
-#playerAttack {
-    margin: 0px;
-    border: 0px;
-    padding: 0px;
-}
-
 #ingame_player {
     position: absolute;
     display: block;
@@ -18,23 +11,69 @@
     z-index: 4;
     clip: rect(10px, 45px, 115px, 0);
 }
-
+/* wing1 = top: 686px; left: 729px; */
 #wing1 {
     position: absolute;
-    top: 686px;
-    left: 729px;
+    top: 56px;
+    left: 11px;
     z-index: 3;
     transform: rotate(15deg);
 }
-
+/* wing2 = top: 686px; left: 609px; */
 #wing2 {
     position: absolute;
-    top: 686px;
-    left: 609px;
+    top: 56px;
+    left: -110px;
     z-index: 3;
     transform: scale(-1, 1) rotate(15deg);
 }
 
+#wing1_axis {
+    position: absolute;
+    width: 200px;   height: 100px;
+    top: 630px;    left: 719px;
+    animation: rotate-axis1 1.5s linear infinite;
+}
+@keyframes rotate-axis1 {
+    0% {
+        transform: perspective(900px) rotateY(0deg);
+    }
+    25% {
+        transform: perspective(900px) rotateY(30deg);
+    }
+    50% {
+        transform: perspective(900px) rotateY(0deg);
+    }
+    75% {
+        transform: perspective(700px) rotateY(-30deg);
+    }
+    100% {
+        transform: perspective(700px) rotateY(0deg);
+    }
+}
+#wing2_axis {
+    position: absolute;
+    width: 200px;   height: 100px;
+    top: 630px;    left: 719px;
+    animation: rotate-axis2 1.5s linear infinite;
+}
+@keyframes rotate-axis2 {
+    0% {
+        transform: perspective(900px) rotateY(0deg);
+    }
+    25% {
+        transform: perspective(900px) rotateY(-30deg);
+    }
+    50% {
+        transform: perspective(900px) rotateY(0deg);
+    }
+    75% {
+        transform: perspective(700px) rotateY(30deg);
+    }
+    100% {
+        transform: perspective(700px) rotateY(0deg);
+    }
+}
 #ArrowPosition {
     position: absolute;
     top: 582px;

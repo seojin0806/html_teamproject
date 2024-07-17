@@ -27,8 +27,3 @@ function ajaxTest() {
         }
     });
 }
-
-function status_of_ingame() {
-    HP = 1;
-    console.log(HP);
-}

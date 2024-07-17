@@ -21,12 +21,19 @@
 
 <body>
     <button id="btn1">체력 0</button>
-    
+
     <!--플레이어 이동 관련 / div id를 쓰지 않음. 삭제할거면 해-->
     <div id="playerImg" draggable="true">
         <img id="ingame_player" class="wing">
-        <canvas id="wing1" class="wing"></canvas>
-        <canvas id="wing2" class="wing"></canvas>
+        <div id="wing1_axis">
+            <canvas id="wing1" class="wing"></canvas>
+            
+        </div>
+        <div id="wing2_axis">
+            <canvas id="wing2" class="wing"></canvas>
+        </div>
+        
+        
     </div>
 
     <!--플레이어 공격(투사체) 관련-->

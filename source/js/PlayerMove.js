@@ -55,20 +55,20 @@ function mouseLocation() {
         $(document).mousemove(function (e) {
             var moveX = e.clientX - startX + Location_Left;
             var moveY = e.clientY - startY + Location_Top;
-            var moveY = 622;
 
             $('#ingame_player').css({
-                top: moveY, left: moveX
+                left: moveX
             })
-            $('#wing1').css({
-                top: 64 + moveY, left: -71 + moveX
+            $('#wing1_axis').css({
+                left: -81+moveX
             })
-            $('#wing2').css({
-                top: 64 + moveY, left: -191 + moveX
+            $('#wing2_axis').css({
+                left: -81+moveX
             })
             $('#ArrowPosition').css({
-                top: -40+moveY, left: -6+moveX
+                left: -6+moveX
             })
+            
 
         });
         // 마우스 드래그 상태가 아닐 때
