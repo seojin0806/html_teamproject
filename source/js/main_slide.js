@@ -1,4 +1,3 @@
-// 메인화면 슬라이더
 // 처음 인덱스는 1
 let index = 1;
 $(document).ready(function () {
@@ -20,6 +19,7 @@ function slide_right() {
         })
         console.log('이동합니다..');
         index--;
+        set_current_player();
     }
  }
 
@@ -30,5 +30,14 @@ function slide_right() {
             left: '-=550'
         })
         index++;
+        set_current_player();
     }
- }
+}
+
+function set_current_player(){
+    //현재 선택된 플레이어 정보를 가져온 뒤...
+    let value = JSON.parse(localStorage.getItem("player_info"));
+    value['current_player'] = index;
+    //다시 현재 정보 바꿔주고 저장..
+    localStorage.setItem("player_info",JSON.stringify(value));   
+}

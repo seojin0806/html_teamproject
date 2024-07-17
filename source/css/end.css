@@ -132,3 +132,7 @@
     border-radius: 25px;
     background: linear-gradient(to bottom, rgb(245,195,9),rgb(248, 213, 49));
 }
+
+.gradient:hover{
+    cursor: pointer;
+}
