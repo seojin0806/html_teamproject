@@ -129,7 +129,7 @@ jQuery.check_valid = function(cost){
     }
     else{
         //유저 돈까는 로직 추가..
-        
+
         //캐릭터 체력 변경...
         jQuery.setStat();
         console.log("구매");

@@ -9,7 +9,7 @@
     "2": {
         "source": "../images/Lobby/select_character_02.png",
         "hp": 5,
-        "speed": 0.7,
+        "speed": 2,
         "level_hp": 0,
         "level_speed": 0,
         "cost" : 7000
@@ -17,7 +17,7 @@
     "3": {
         "source": "../images/Lobby/select_character_03.png",
         "hp": 7,
-        "speed": 0.4,
+        "speed": 3,
         "level_hp": 0,
         "level_speed": 0,
         "cost": 10000

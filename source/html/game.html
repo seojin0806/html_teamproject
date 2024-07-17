@@ -13,12 +13,14 @@
 			$('.scroll').infiniteslide({
 				direction: 'down',
 				pauseonhover: false,
-                speed : 800
+                speed : 380
 			});
 		});
     </script>
     <!-- 거리 재기.. -->
     <script src="../js/distance.js"></script>
+    <!-- 체력 ui 세팅 -->
+    <script src="../js/heart.js"></script>
     <!--css요소....-->
     <link rel="stylesheet" href="../css/default2.css">
     <link rel="stylesheet" href="../css/game.css">
@@ -27,7 +29,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Staatliches&display=swap" rel="stylesheet">  
 </head>
-<body>
+<body oncontextmenu="return false" ondragstart="return false" onselectstart="return false">
     <div class="container">
         <div class="slider-container">
             <ul class="scroll">
@@ -88,7 +90,7 @@
                 <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="red" class="bi bi-suit-heart-fill" viewBox="0 0 16 16">
                     <path d="M4 1c2.21 0 4 1.755 4 3.92C8 2.755 9.79 1 12 1s4 1.755 4 3.92c0 3.263-3.234 4.414-7.608 9.608a.513.513 0 0 1-.784 0C3.234 9.334 0 8.183 0 4.92 0 2.755 1.79 1 4 1"/>
                 </svg>
-                <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="black" class="bi bi-suit-heart-fill" viewBox="0 0 16 16">
+                <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="red" class="bi bi-suit-heart-fill" viewBox="0 0 16 16">
                     <path d="M4 1c2.21 0 4 1.755 4 3.92C8 2.755 9.79 1 12 1s4 1.755 4 3.92c0 3.263-3.234 4.414-7.608 9.608a.513.513 0 0 1-.784 0C3.234 9.334 0 8.183 0 4.92 0 2.755 1.79 1 4 1"/>
                 </svg>
          </div>
