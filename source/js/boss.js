@@ -5,37 +5,31 @@ var way;
 function init_stage_boss(difficulty) {
     if (boss != null) { boss = null; }
 
-    let meteor; // true or false
-    let field = document.querySelector('.container');
-    let boss_img_tag = document.querySelector('#boss_img');
-
-    if (difficulty < 3)
-        meteor = false;
-    else
-        meteor = true;
+    let field = document.querySelector('.slider-container');
+    let link = document.querySelector('#boss-css');
+    let boss_layout = document.querySelector('.boss-zone > div');
 
     boss = {
-        shape: "./../images/Boss/boss" + difficulty + ".webp",
+        shape: "boss" + difficulty + ".css",
         HP: 10 * difficulty,
-        패턴1: true,
-        패턴2: meteor,
         attack_pattern_1_timer_id: null, // summon dragons pattern
         attack_pattern_2_timer_id: null, // meteor fall pattern
     }
-    $('#boss_img').attr('src', boss.shape);
-    boss.top= 0 - boss_img_tag.offsetHeight / 2; //보스가위치할y좌표 - boss_img_tag.offsetHeight / 2;
-    boss.left= field.offsetWidth/2 - boss_img_tag.offsetWidth / 2; //보스가위치할x좌표 - boss_img_tag.offsetWidth / 2;
-    $('#boss_img').css({
-        left: boss.left,
-        top: 0 - boss_img_tag.offsetHeight,
-        transform: 'translatey(' + (0 - boss.top) + 'px)',
-        transition: '0.5s'
-    });
+    $(link).attr('href', boss.shape);
+    setTimeout(function () {
+        boss.top = 0 - boss_layout.offsetHeight;
+        boss.left = field.offsetWidth / 2 - boss_layout.offsetWidth / 2;
+        $('.boss-zone').css({
+            left: boss.left,
+            top: boss.top,
+            visibility: 'visible',
+            transform: 'translatey(' + (0 - boss.top / 2) + 'px)',
+            transition: '0.5s'
+        });
+    }, 1000);
 
-    if (boss.패턴1)
-        boss.attack_pattern_1_timer_id = setInterval(summon_dragons, (15 - 1.5 * difiiculty) * 1000); // interval : (15-1.5n) sec
-
-    if (boss.패턴2)
+    boss.attack_pattern_1_timer_id = setInterval(summon_dragons, (15 - 1.5 * difiiculty) * 1000); // interval : (15-1.5n) sec
+    if (2 < difficulty)
         boss.attack_pattern_2_timer_id = setInterval(meteor_fall, 20 * 1000); // interval : 20 sec
 
     time_limit = 60;
@@ -44,7 +38,7 @@ function init_stage_boss(difficulty) {
 
 function time_limit_timer() {
     console.log('boss HP : ' + boss.HP);
-    if ( boss != null && boss.HP <= 0) {
+    if (boss != null && boss.HP <= 0) {
         clear_stage(); // 보스 몬스터 처치
     } else if (boss !== null && time_limit > 0) {
         time_limit--;
@@ -54,7 +48,7 @@ function time_limit_timer() {
     } else if (time_limit == 0) {
         delete_boss();
         game_over(); // 플레이어 패배
-    } 
+    }
 }
 
 function meteor_fall() {
@@ -68,22 +62,22 @@ function meteor_fall() {
         else {
             setTimeout(meteorfunc, 1000);
         }
-    } 
+    }
 }
 
 function meteorfunc() {
     let temp = setInterval(collision_detection, 100);
-    setTimeout(() => {clearInterval(temp)}, 5 * 1000);
+    setTimeout(() => { clearInterval(temp) }, 5 * 1000);
     for (let i = 0; i < 5; ++i) {
-        if(i != way )  $('.meteor')[i].style.display = 'block';
+        if (i != way) $('.meteor')[i].style.display = 'block';
         $('.meteor')[i].classList.add('active');
     }
 }
 
 function delete_boss() {
-    if(null != boss.attack_pattern_1_timer_id)
+    if (null != boss.attack_pattern_1_timer_id)
         clearInterval(boss.attack_pattern_1_timer_id);
-    if(null != boss.attack_pattern_2_timer_id)
+    if (null != boss.attack_pattern_2_timer_id)
         clearInterval(boss.attack_pattern_2_timer_id);
     $('#time_limit').css('display', 'none');
     boss = null;
@@ -92,11 +86,11 @@ function delete_boss() {
 }
 function clear_stage() {
     // 보스 처치 모션 추가
-    let boss_img_tag = document.querySelector('#boss_img');
+    let boss_img_tag = document.querySelector('.boss-zone');
     boss_img_tag.classList.add('fadeout')
     delete_boss();
     gold = gold + 100 * difficulty
-    if(difficulty < 5) {
+    if (difficulty < 5) {
         difficulty++;
     }
 }
@@ -105,10 +99,11 @@ function collision_detection() {
     hero_coordinate = [[hero.left, hero.top], [hero.right, hero.bottom], [hero.right, hero.top], [hero.left, hero.bottom]];
 
     for (let j = 0; j < 5; ++j) {
-        let t = document.querySelectorAll('#row > div > img')[j].getBoundingClientRect().top
-        let b = document.querySelectorAll('#row > div > img')[j].getBoundingClientRect().bottom
-        let l = document.querySelectorAll('#row > div > img')[j].getBoundingClientRect().left
-        let r = document.querySelectorAll('#row > div > img')[j].getBoundingClientRect().right
+        let m = document.querySelectorAll('#meteor-zone > .meteor-line > img')[j].getBoundingClientRect();
+        let t = m.top;
+        let b = m.bottom;
+        let l = m.left;
+        let r = m.right;
         for (let i = 0; i < 4; ++i) {
             if (l <= hero_coordinate[i][0] && hero_coordinate[i][0] <= r) {
                 if (t <= hero_coordinate[i][1] && hero_coordinate[i][1] <= b) {
