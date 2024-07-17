@@ -1,9 +1,4 @@
-#container{
-    width: 600px;
-    height: 920px;
-    overflow: hidden;
-    position: relative;
-}
+
 
 .line{
     width: 100%;
@@ -35,6 +30,15 @@
     height: 130px;
     display: inline-block;
     
+}
+.trasure { /*요건 보물상자*/
+    width: 105px;
+    height: 130px;
+    display: inline-block;
+    position: relative;
+}
+.sprite-trasure {
+    background-image: url('../images/Monsters/treasure.png');
 }
 /*--------------------끝-------------------*/
 
@@ -88,6 +92,39 @@
     left: 50px; /* 원하는 위치 */
 }
 /*-------------몬스터 형체 생성 끝---------------*/
+/*-------------보물 형체 생성 -------------*/
+.tbody{
+    width: 106px;
+    height: 78px;
+    display: flex;
+    background-position: -6px -46px;
+    position: absolute; /* 절대 위치 */
+    top: 0px; /* 부모 기준으로 상단 */
+    left: 5px; /* 부모 기준으로 좌측 */
+}
+.twing-left{
+    width: 73px;
+    height: 44px;
+    background-position: 0 0;
+    transform: rotate(20deg);
+    position: absolute; /* 절대 위치 */
+    top: 5px; /* 부모 기준으로 상단 */
+    left: -30px; /* 부모 기준으로 좌측 */
+    animation : tleft_fly 0.8s infinite ;
+    transform-origin: bottom right;
+}
+.twing-right{
+    width: 73px;
+    height: 44px;
+    background-position: 0 0;
+    transform: scaleX(-1) rotate(20deg);
+    position: absolute; /* 절대 위치 */
+    top: 5px; /* 부모 기준으로 상단 */
+    left: -5px; /* 부모 기준으로 좌측 */
+    animation : tright_fly 0.8s infinite ;
+    transform-origin: bottom right;
+}
+/*-------------보물 형체 생성 끝---------------*/
 
 
 @keyframes left_fly {
@@ -111,6 +148,29 @@
     }
     100% {
         transform: scaleX(-1) rotate(0deg);
+    }
+}
+@keyframes tleft_fly {
+    0% {
+        transform: rotate(20deg);
+    }
+    50% {
+        transform: rotate(-30deg);
+    }
+    100% {
+        transform: rotate(20deg);
+    }
+}
+
+@keyframes tright_fly {
+    0% {
+        transform: scaleX(-1) rotate(20deg);
+    }
+    50% {
+        transform: scaleX(-1) rotate(-30deg);
+    }
+    100% {
+        transform: scaleX(-1) rotate(20deg);
     }
 }
 

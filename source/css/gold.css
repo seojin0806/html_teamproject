@@ -6,13 +6,21 @@
     
 }
 
-@keyframes drop {
-    0% {
-    }
-    20%{
-       
-    }
-    100% {
-        
-    }
+.gem {
+    position: absolute;
+    width: 64px;
+    height: 64px;
+}
+
+.gem-1 {
+    background-image: url('../images/Item/item_gem.png');
+    background-size: 100% 100%;
+}
+.gem-2 {
+    background-image: url('../images/Item/item_gem_02.png');
+    background-size: 100% 100%;
+}
+.gem-3 {
+    background-image: url('../images/Item/item_gem_03.png');
+    background-size: 100% 100%;
 }
