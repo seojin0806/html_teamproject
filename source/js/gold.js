@@ -23,4 +23,50 @@ function update_gold(){
     gold_displayer.innerHTML = sessionStorage.getItem("gold")+" G"
 }
 
+function drop_gold(monster,n){
+    for (i=0;i<n;i++){
+
+        const gold = document.createElement('div');
+        gold.classList.add('gold');
+
+        // 랜덤한 위치 설정
+        var randomX = rand(1,300);
+        randomX = randomX - 150;
+        var randomY = rand(60,90);
+        randomY = randomY - 150;
+         let drop1 = [
+            {transform : `translateX(${randomX}px) translateY(${randomY}px)`},
+         ]
+         var plus_X = rand(1,150);
+         randomX = randomX + (plus_X - 75);
+         let drop2 =[
+            {transform: `translateX(${randomX}px) translateY(910px)`}
+         ]
+         let options1 = {
+            delay: 0,
+            duration: 200,
+            easing: "linear",
+            fill: "forwards"
+        };
+        let options2 = {
+            delay: 0,
+            duration: 1500,
+            easing: "linear",
+            fill: "forwards"
+        };
+
+        gold.animate(drop1, options1).onfinish = () => {
+            gold.animate(drop2, options2);
+        };
+
+        gold.addEventListener('animationend', () =>{
+            gold.remove();
+        });
+
+        monster.appendChild(gold);
+
+        //gold 충돌 이벤트 일단은 hover로 하겠습니다.
+    }
+}
+
 //세션 스토리지를 사용하였습니다 될지 모르겠네요.

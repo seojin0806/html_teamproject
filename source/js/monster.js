@@ -64,44 +64,9 @@ function create_monster(generation_line){
             while (monster.hasChildNodes()) {
                 monster.removeChild(monster.firstChild);
             }
-            
-            const gold = document.createElement('div');
-            gold.classList.add('gold');
 
-            // 랜덤한 위치 설정
-            var randomX = rand(1,300);
-            randomX = randomX - 150;
-            console.log(randomX);
-             
-             let drop1 = [
-                {transform : `translateX(0px) translateY(0px)`},
-                {transform : `translateX(${randomX}px) translateY(-60px)`},
-             ]
-             let drop2 =[
-                {transform : `translateX(0px) translateY(0px)`},
-                {transform: `translateX(${randomX}px) translateY(910px)`}
-             ]
-             let options1 = {
-                delay: 0,
-                duration: 700,
-                easing: "linear",
-                fill: "forwards"
-            };
-            let options2 = {
-                delay: 0,
-                duration: 1500,
-                easing: "linear",
-                fill: "forwards"
-            };
-            
-
-            gold.animate(drop1, options1);
-            gold.animate(drop2, options2);
-            
+            drop_gold(monster,4);
             monster.className = "empty_enemy";
-            monster.appendChild(gold);
-
-            
 
         }
     });
@@ -155,7 +120,7 @@ function line_set(n){
     container.appendChild(generation_line);
 
     //애니메이션 끝날시 삭제
-    //generation_line.addEventListener('animationend', () =>{
-        //generation_line.remove();
-    //});
+    generation_line.addEventListener('animationend', () =>{
+        generation_line.remove();
+    });
 }
