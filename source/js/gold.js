@@ -1,29 +1,15 @@
-//인벤 db, 아직은 골드 밖에없다.
-sessionStorage.setItem("gold", 20000);
-//첫 실행
-const gold_displayer = document.getElementById("gold-displayer");
-gold_displayer.innerHTML = sessionStorage.getItem("gold")+" G";
+//main_gold는 메인화면의 골드 수정 및 총합 보여주는 코드
+//여기 gold는 게임내 골드 변화및 드랍 제어.
+//임시용 인벤 db 나중에 삭제 예정.
+
 //드랍 제어를 위한 랜덤 함수
 function rand(min, max) {
     return Math.floor(Math.random() * (max - min + 1)) + min;
 }
 
-var gold = 10;
-
-//확인용 함수
-function editGold() {
-    const newName = prompt("새 이름을 입력하세요:", sessionStorage.getItem("gold"));
-    if (newName) {
-        sessionStorage.setItem("gold", newName)
-        update_gold(); 
-    }
-}
-
-function update_gold(){
-    gold_displayer.innerHTML = sessionStorage.getItem("gold")+" G"
-}
-
+//골드 드랍애니메이션
 function drop_gold(monster,n){
+    //골드 n개 만큼 생성
     for (i=0;i<n;i++){
 
         const gold = document.createElement('div');
@@ -66,7 +52,69 @@ function drop_gold(monster,n){
         monster.appendChild(gold);
 
         //gold 충돌 이벤트 일단은 hover로 하겠습니다.
+
+        gold.addEventListener('mouseover', () =>{
+            var new_gold = Number(window.localStorage.getItem("gold"))+5;
+            window.localStorage.setItem("gold", new_gold)
+            gold.remove();
+        });
     }
 }
 
-//세션 스토리지를 사용하였습니다 될지 모르겠네요.
+function drop_gem(monster,n){
+    //보석을 n개 만큼 생성
+    for (i=0;i<n;i++){
+
+        const gem = document.createElement('div');
+        gem.classList.add('gem');
+        var sprite_list = ['gem-1','gem-2','gem-3']
+        var random_s = rand(0,2);
+        gem.classList.add(sprite_list[random_s]);
+
+
+        // 랜덤한 위치 설정
+        var randomX = rand(1,300);
+        randomX = randomX - 150;
+        var randomY = rand(60,90);
+        randomY = randomY - 150;
+        //애니메이션 설정
+         let drop1 = [
+            {transform : `translateX(${randomX}px) translateY(${randomY}px)`},
+         ]
+         var plus_X = rand(1,150);
+         randomX = randomX + (plus_X - 75);
+         let drop2 =[
+            {transform: `translateX(${randomX}px) translateY(910px)`}
+         ]
+         let options1 = {
+            delay: 0,
+            duration: 200,
+            easing: "linear",
+            fill: "forwards"
+        };
+        let options2 = {
+            delay: 0,
+            duration: 1500,
+            easing: "linear",
+            fill: "forwards"
+        };
+        gem.animate(drop1, options1).onfinish = () => {
+            gem.animate(drop2, options2);
+        };
+        gem.addEventListener('animationend', () =>{
+            gem.remove();
+        });
+
+        //애니메이션 설정 끝!
+
+        monster.appendChild(gem);
+
+        //gold 충돌 이벤트 일단은 hover로 하겠습니다.
+
+        gem.addEventListener('mouseover', () =>{
+            var new_gold = Number(window.localStorage.getItem("gold"))+10;
+            window.localStorage.setItem("gold", new_gold)
+            gem.remove();
+        });
+    }
+}

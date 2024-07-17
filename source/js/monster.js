@@ -1,5 +1,5 @@
 const btn1 = document.getElementById("creates")
-const container = document.getElementById("container");
+const container = document.querySelector('.monster-container');
 
 //랜덤 함수 min~max 범위의 숫자를 랜덤하게 출력
 function rand(min, max) {
@@ -31,11 +31,13 @@ btn1.onclick= () => {
 function create_monster(generation_line){
     const monster = document.createElement('div');
     monster.classList.add('monster');
-    
+
+    var random_s = rand(0,2);
+
     // 스프라이트 생성 함수
     const createSprite = (className) => {
         const sprite = document.createElement('div');
-        sprite.classList.add('sprite-1', className);
+        sprite.classList.add(sprite_list[random_s], className);
         //console.log(random_s);
         return sprite;
     };
@@ -65,12 +67,34 @@ function create_monster(generation_line){
                 monster.removeChild(monster.firstChild);
             }
 
-            drop_gold(monster,4);
+            drop_gold(monster,10);
+            drop_gem(monster,5);
             monster.className = "empty_enemy";
 
         }
     });
 
+}
+function create_treasure(generation_line){
+    const monster = document.createElement('div');
+    monster.classList.add('trasure');
+
+    var random_s = rand(0,2);
+
+    // 스프라이트 생성 함수
+    const createSprite = (className) => {
+        const sprite = document.createElement('div');
+        sprite.classList.add(sprite_list[random_s], className);
+        //console.log(random_s);
+        return sprite;
+    };
+    
+    // 스프라이트 추가
+    monster.appendChild(createSprite('wing-left'));
+    monster.appendChild(createSprite('wing-right'));
+    monster.appendChild(createSprite('body'));
+    monster.appendChild(createSprite('eyes-left'));
+    monster.appendChild(createSprite('eyes-right'));
 }
 //빈공간 생성 함수
 function create_empty(generation_line){
