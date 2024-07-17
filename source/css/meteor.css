@@ -1,0 +1,39 @@
+#meteor-zone {
+    display: flex;
+    height: 100vh;
+    /* width: 게임화면의 가로 길이와 동일하게 설정한다. */
+    width: 100%;
+    /* 부모 요소를 기준으로 위치 설정. 부모에게 position이 없으면 조상 기준 */
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+
+#meteor-zone .meteor-line {
+    flex-grow: 1;
+    height: 100vh;
+    width: 20%;
+}
+
+.meteor {
+    width: 100%;
+    position: relative;
+    display: none;
+}
+
+.meteor.active {
+    animation-name: falling;
+    /* 운석 떨어지는 속도 조절 */
+    animation-duration: 5s;
+    animation-fill-mode: forwards;
+}
+
+@keyframes falling {
+    from {
+        top: -128px;
+    }
+
+    to {
+        top: 2000px;
+    }
+}

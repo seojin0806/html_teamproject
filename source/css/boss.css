@@ -1,0 +1,19 @@
+.boss-zone {
+    position: relative;
+    visibility: hidden;
+}
+.boss-zone.fadeout {
+    animation-name: fadeout;
+    animation-duration: 2s;
+    /* 투명해지는 속도 조절 */
+    animation-fill-mode: forwards;
+}
+@keyframes fadeout {
+    from {
+        opacity: 1
+    }
+
+    to {
+        opacity: 0
+    }
+}
