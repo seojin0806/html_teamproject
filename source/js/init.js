@@ -5,7 +5,7 @@ $(document).ready(function () {
         type: 'GET',
         dataType: 'json',
         success: function (data) {
-            console.log(JSON.stringify(data)); // JSON 데이터를 콘솔에 출력합니다.
+            //console.log(JSON.stringify(data)); // JSON 데이터를 콘솔에 출력합니다.
             // 데이터를 사용하여 HTML 요소를 업데이트합니다.
             localStorage.setItem("character_info",JSON.stringify(data));
             
@@ -19,7 +19,7 @@ $(document).ready(function () {
         type: 'GET',
         dataType: 'json',
         success: function (data) {
-            console.log(JSON.stringify(data)); // JSON 데이터를 콘솔에 출력합니다.
+            //console.log(JSON.stringify(data)); // JSON 데이터를 콘솔에 출력합니다.
             // 데이터를 사용하여 HTML 요소를 업데이트합니다.
             localStorage.setItem("player_info",JSON.stringify(data));
             

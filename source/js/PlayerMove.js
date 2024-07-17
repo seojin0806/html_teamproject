@@ -1,19 +1,26 @@
-var PlayerStatus = JSON.parse(localStorage.getItem("PlayerStatus"));
+var PlayerStatus_Key = localStorage.getItem("PlayerStatus");
+var CurrentPlayer_Key = localStorage.getItem("player_info");
+ 
 $(document).ready(function () {
+    // 역직렬화
+    var PlayerStatus = JSON.parse(PlayerStatus_Key);
+    var CurrentPlayer = JSON.parse(CurrentPlayer_Key);
 
-    // playerNum 변수는 테스트를 위한 임시 값
-    var playerNum = 2;
-    PlayerChoice(playerNum);
+    // 현재 선택된 플레이어 넘버
+    var playerNum = CurrentPlayer["current_player"];
+    var img_src = PlayerStatus[playerNum].ingame_src;
 
+    PlayerChoice(img_src);
     mouseLocation();
 });
-function PlayerChoice(playerNum){
+// 캐릭터 이미지 선택
+function PlayerChoice(img_src){
     let ingame_player = document.querySelector('#ingame_player');
-    ingame_player.src = PlayerStatus[playerNum].ingame_src;
+    ingame_player.src = img_src;
     Cut_Player_Img(ingame_player.src);
 }
 
-//이미지 커팅
+// 이미지 커팅
 function Cut_Player_Img(imgs) {
 
     var wing1 = document.querySelector('#wing1');
@@ -64,7 +71,7 @@ function mouseLocation() {
             })
 
         });
-        //마우스 드래그 상태가 아닐 때
+        // 마우스 드래그 상태가 아닐 때
         $(document).mouseup(function () {
             $(document).off("mousemove");
             $(document).off("mouseup");

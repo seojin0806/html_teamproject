@@ -12,12 +12,16 @@
     <!--PlayerMove.js-->
     <script src="../js/PlayerMove.js"></script>
     <!--PlayerAttack.js-->
-    <script src="../js/PlayerAttack.js"></script>
+    <script src="../js/PlayerAttack.js" type="module"></script>
     <!--PlayerStatus.js / 상위에 올려야함-->
-    <script src="../js/PlayerStatus.js"></script>
+    <script src="../js/PlayerStatus.js" type="module"></script>
+    <!--init.js-->
+    <script src="../js/init.js" type="module"></script>
 </head>
 
 <body>
+    <button id="btn1">체력 0</button>
+    
     <!--플레이어 이동 관련 / div id를 쓰지 않음. 삭제할거면 해-->
     <div id="playerImg" draggable="true">
         <img id="ingame_player" class="wing">
