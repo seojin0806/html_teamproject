@@ -96,7 +96,7 @@ button:hover{
     cursor: pointer;
 }
 
-.character-stack{
+.character-stat{
     width: 500px;
     height: 200px;
     background-color: rgba(255,255,255,0.6);
@@ -143,7 +143,7 @@ button:hover{
     color: red;
 }
 
-.stack{
+.stat{
     /* 총 높이 --> 85px */
     font-family: "Do Hyeon", sans-serif;
     font-weight: 400;
@@ -157,23 +157,23 @@ button:hover{
     line-height: 50px;
 }
 
-.stack > span {
+.stat > span {
     display: block;
     margin-left: 20px;
     width: 100px;
     float: left;
 }
 
-.stack-area{
+.stat-area{
     /* 영역-> 500px - 60px - 120px = 320px */
     width: 320px;
     height: 34px;
     float: left;
-    /* 높이가 34px stack 높이가 50px  */
+    /* 높이가 34px stat 높이가 50px  */
     margin-top: 8px;
 }
 
-.stack > button{
+.stat > button{
     display: block;
     margin-right: 20px;
     width: 40px;
@@ -184,27 +184,26 @@ button:hover{
     line-height: 50px;
 }
 
-.stack > button:hover{
+.stat > button:hover{
     color: red;
 }
 
-.stack-level{
+.stat-level{
     width: 33%;
     height: 100%;
-    background-color: red;
     float: left;
     border: 1px solid black;
 }
 
-.stack-level:first-child{
+.stat-level:first-child{
     /* 부모의 넓이--> 100% */
-    /* stack-area 높이 너비 -> 510px 40px */
+    /* stat-area 높이 너비 -> 510px 40px */
     border-top-left-radius: 20px;
     border-bottom-left-radius: 20px;
     border-right: transparent;
 }
 
-.stack-level:last-child{
+.stat-level:last-child{
     border-top-right-radius: 20px;
     border-bottom-right-radius: 20px;
     border-left: transparent;

@@ -19,7 +19,10 @@
     </script>
     <script src="../js/main_slide.js"></script>
     <script src="../js/active_modal.js"></script>
-    <!-- CSS 부분 -->
+    <!-- 스택바 설정 -->
+     <script src="../js/set_statbar.js"></script>
+    <!-- 캐릭터 선택시 호출되는 이벤트.. -->
+    <script src="../js/main_btn_select.js"></script>
     <link rel="stylesheet" href="../css/default2.css">
     <link rel="stylesheet" href="../css/main.css">
     <link rel="stylesheet" href="../css/modal.css">
@@ -32,7 +35,7 @@
      <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
      <link href="https://fonts.googleapis.com/css2?family=Do+Hyeon&display=swap" rel="stylesheet">
 </head>
-<body>
+<body oncontextmenu="return false" ondragstart="return false" onselectstart="return false">
     <div class="container">
         <div class="slider-container">
             <ul class="scroll">
@@ -53,14 +56,14 @@
        <!--골드 창..-->
        <div class="gold-div">
             <img src="../images/Item/item_coin.png">
-            <p id="gold-displayer"></p>
+            <p>4211115G</p>
        </div>
        <!--시작버튼-->
        <button class="start-btn">start...</button>
        <!--캐릭터 선택 이미지-->
        <div class="slider-character">
             <div class="character">
-                <img src="../images/Character/character_01.png">
+                <img src="../images/Character/character_01.png" style="width: 400px; height: auto;">
             </div>
             <div class="character">
                 <img src="../images/Character/character_02.png">
@@ -77,43 +80,43 @@
             &rang;
         </button>
        <!--캐릭터 스택과 선택버튼-->
-       <div class="character-stack">
-            <button class="select">Choose</button>
+       <div class="character-stat">
+            <button class="select" id="select">Choose</button>
             <!--스택 창...-->
             <!--체력 창..-->
-            <div class="stack">
-                <span><p>체력: 4</p></span>
+            <div class="stat">
+                <span><p id="text-hp">체력: 4</p></span>
                 <!--스택 영역칸-->
-                <div class="stack-area">
+                <div class="stat-area" id="stat-hp">
                     <!-- 스택은 총 3칸... -->
-                    <div class="stack-level">
+                    <div class="stat-level">
 
                     </div>
-                    <div class="stack-level">
+                    <div class="stat-level">
                         
                     </div>
-                    <div class="stack-level" style="background-color: transparent;">
+                    <div class="stat-level">
                         
                     </div>
                 </div>
-                <button class="active-modal"> up</button>
+                <button class="active-modal" id="hp"> up</button>
             </div>
-            <div class="stack">
-                <span><p>공속: 0.6</p></span>
+            <div class="stat">
+                <span><p id="text-speed">공속: 0.6</p></span>
                 <!--스택 영역칸-->
-                <div class="stack-area">
+                <div class="stat-area" id="stat-speed">
                     <!-- 스택은 총 3칸... -->
-                    <div class="stack-level" style="background-color: blue;">
+                    <div class="stat-level">
 
                     </div>
-                    <div class="stack-level" style="background-color: blue;">
+                    <div class="stat-level">
                         
                     </div>
-                    <div class="stack-level" style="background-color: transparent;">
+                    <div class="stat-level">
                         
                     </div>
                 </div>
-                <button class="active-modal"> up</button>
+                <button class="active-modal" id="speed"> up</button>
             </div>
        </div>
     </div>
@@ -127,17 +130,14 @@
                 <p class="title-gold">골드: 4211115G &rarr; 4211115G</p></span>
         </div>
         <div class="div-btn">
-            <button class="deactive-modal">
-                증가   
+            <button class="deactive-modal" id="addstat">
+                구매   
             </button>
-            <button class="deactive-modal">
-                감소   
+            <button class="deactive-modal" id="cancel">
+                취소   
             </button>
 
         </div>
     </div>
-
-    <!-- 골드 DB 연결. -->
-    <script src="../js/gold.js"></script>
 </body>
 </html>
