@@ -1,6 +1,8 @@
 //main_gold는 메인화면의 골드 수정 및 총합 보여주는 코드
 //여기 gold는 게임내 골드 변화및 드랍 제어.
-//임시용 인벤 db 나중에 삭제 예정.
+
+var gold_inven = 0;
+update_gold();
 
 //드랍 제어를 위한 랜덤 함수
 function rand(min, max) {
@@ -54,7 +56,9 @@ function drop_gold(monster,n){
         //gold 충돌 이벤트 일단은 hover로 하겠습니다.
 
         gold.addEventListener('mouseover', () =>{
-            var new_gold = Number(window.localStorage.getItem("gold"))+5;
+            var new_gold = Number(window.localStorage.getItem("gold"))+10;
+            gold_inven = gold_inven + 10;
+            update_gold()
             window.localStorage.setItem("gold", new_gold)
             gold.remove();
         });
@@ -112,9 +116,26 @@ function drop_gem(monster,n){
         //gold 충돌 이벤트 일단은 hover로 하겠습니다.
 
         gem.addEventListener('mouseover', () =>{
-            var new_gold = Number(window.localStorage.getItem("gold"))+10;
-            window.localStorage.setItem("gold", new_gold)
+            var new_gold = Number(window.localStorage.getItem("gold"))+30;
+            gold_inven = gold_inven + 30;
+            update_gold()
+            window.localStorage.setItem("gold", new_gold);
             gem.remove();
         });
     }
 }
+
+function update_gold(){
+    var total_gold =  document.querySelector(".total-coin");
+
+    total_gold.innerHTML = gold_inven + "G";
+    window.localStorage.setItem("result_gold", gold_inven);
+}
+
+
+//monster 에는 보스 몹 div를 넣고 n에는 생성하고 싶은 양을 넣어주세요
+//gold는 하나당 10G gem은 하나당 30G입니다 생성에 참고해주세요.
+// 골드랑 젬이 함께 터지면 예쁠거예요. b
+
+//그리고 상점 구현할때 데이터 베이스 저장 키값 gold 입니다
+//window.localStorage.getItem("gold") 해서 사용해주세요.
