@@ -5,7 +5,7 @@
     height: 150;
     display: inline;
     position: absolute;
-    animation : go_down 3s;
+    animation : go_down 3.5s;
 }
 
 /*----몬스터 및 빈 몬스터의 부모 div css 설정----*/
@@ -99,7 +99,7 @@
     display: flex;
     background-position: -6px -46px;
     position: absolute; /* 절대 위치 */
-    top: 0px; /* 부모 기준으로 상단 */
+    top: 40px; /* 부모 기준으로 상단 */
     left: 5px; /* 부모 기준으로 좌측 */
 }
 .twing-left{
@@ -108,7 +108,7 @@
     background-position: 0 0;
     transform: rotate(20deg);
     position: absolute; /* 절대 위치 */
-    top: 5px; /* 부모 기준으로 상단 */
+    top: 45px; /* 부모 기준으로 상단 */
     left: -30px; /* 부모 기준으로 좌측 */
     animation : tleft_fly 0.8s infinite ;
     transform-origin: bottom right;
@@ -119,7 +119,7 @@
     background-position: 0 0;
     transform: scaleX(-1) rotate(20deg);
     position: absolute; /* 절대 위치 */
-    top: 5px; /* 부모 기준으로 상단 */
+    top: 45px; /* 부모 기준으로 상단 */
     left: -5px; /* 부모 기준으로 좌측 */
     animation : tright_fly 0.8s infinite ;
     transform-origin: bottom right;
@@ -176,9 +176,41 @@
 
 @keyframes go_down {
     0% {
+        transform: translateY(-200px);
     }
     100% {
-        transform: translateY(910px);
+        transform: translateY(1200px);
         transition-property: all; 
     }
 }
+
+
+/*--------터짐 효과--------*/
+.burst {
+    width: 100px;
+    height: 100px;
+    background-color: #f0f0f0;
+    border-radius: 50%;
+    animation: burst 1s;
+    position: absolute;
+}
+
+@keyframes burst {
+    0% {
+        transform: scale(0.4);
+        opacity: 1;
+    }
+    20% {
+        transform: scale(1.3);
+        opacity: 0.6;
+    }
+    30% {
+        transform: scale(1);
+        opacity: 0;
+    }
+    100%{
+        transform: scale(0);
+        opacity: 0;
+    }
+}
+/*-------- 끝 ---------*/
