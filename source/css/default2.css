@@ -2,12 +2,14 @@
     margin: 0;
     padding: 0;
 }
+body{
+    overflow: hidden;
+}
 
 .container{
     /*1칸의 널이는 150px */
     
     width: 550px;
-    height: 100vh;
     margin: 0 auto;
     position: relative;
     overflow: hidden;
