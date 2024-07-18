@@ -25,6 +25,8 @@
     <!--css요소....-->
     <link rel="stylesheet" href="../css/default2.css">
     <link rel="stylesheet" href="../css/game.css">
+    <link rel="stylesheet" href="../css/monster.css">
+    <link rel="stylesheet" href="../css/gold.css">
     <!--구글 폰트...-->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -47,9 +49,6 @@
     <!--score.js-->
     <script src="../js/score.js"></script>
 
-    <!--monster.js-->
-    <script src="../js/monster.js"></script>
-
 </head>
 <!--heart.js 에서 addheart, minusheart 함수로 플레이어와 몬스터 충돌 시 체력 감소-->
 
@@ -57,7 +56,7 @@
 
 
     <div class="container">
-        <button id="btn1_test">체력 -1</button>
+        <button id= "btn1_test">체력 -1</button>
         <div class="slider-container">
             <ul class="scroll">
                 <li>
@@ -74,6 +73,8 @@
                 </li>
             </ul>
         </div>
+        <!--몬스터 생성 div-->
+        <div class="monster-container"></div>
         <!-- 점수랑 골드 창.. -->
         <div class="content-score">
             <div class="score">
@@ -145,7 +146,6 @@
                     d="M4 1c2.21 0 4 1.755 4 3.92C8 2.755 9.79 1 12 1s4 1.755 4 3.92c0 3.263-3.234 4.414-7.608 9.608a.513.513 0 0 1-.784 0C3.234 9.334 0 8.183 0 4.92 0 2.755 1.79 1 4 1" />
             </svg>
         </div>
-
         <!--플레이어 이동 관련 / div id를 쓰지 않음. 삭제할거면 해-->
         <div id="playerImg" draggable="true">
             <img id="ingame_player" class="wing">
@@ -163,10 +163,11 @@
             <div id="ArrowPosition"></div>
             <div id="ClonePosition"></div>
         </div>
-
-
     </div>
-
+    
+    <script src="../js/monster.js" defer></script>
+    <script src="../js/timer.js" defer></script>
+    <script src="../js/gold.js" defer></script>
 
 </body>
 
