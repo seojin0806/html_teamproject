@@ -36,8 +36,9 @@ $(document).ready(function () {
     }, reloading);
 
     //테스트를 위해 넣은 코드. 나중에 삭제
-    $("#btn1").click(function () {
-        ingame_status.HP = 0;
+    $("#btn1_test").click(function () {
+        //ingame_status.HP = 0;
+        jQuery.minusHeart();
     });
 
 });
@@ -51,7 +52,8 @@ function Clone_Arrow() {
     $("#ArrowPosition").clone().appendTo("#ClonePosition").attr("id", arrowID).attr("class", "arrow");
     $("#" + arrowID).css({
         "top": Location_Top,
-        "left": Location_Left + 9
+        "left": Location_Left + 9,
+        "border" : "4px solid red"
     });
 
 
@@ -79,4 +81,28 @@ function Clone_Arrow() {
         }
     }, 10 - (1.5 * speed));
 
+}
+function Player_N_Monster_crash(monster_LocationX, monster_LocationY){
+
+    let A_X, A_Y, A_W, A_H, B_X, B_Y, B_W, B_H;
+    //A = PLAYER B = OTHER
+    A_X = $("#Player_HitBox").position().left;
+    A_Y = $("#Player_HitBox").position().top;
+    A_W = $("#Player_HitBox").width();
+    A_H = $("#Player_HitBox").height();
+    B_X;
+    B_Y;
+    B_W;
+    B_H;
+
+    if((B_X+B_W)>=A_X && (A_X+A_W)>=B_X){
+        if((B_Y+B_H)>=A_Y && (A_Y+A_H)>=B_Y){
+            console.log("플레이어와 상대 객체와 충돌 발생!");
+
+            // 1. 상대 객체의 id나 클래스가 몬스터인 경우
+
+            // 2. 상대 객체의 id나 클래스가 아이템인 경우
+            
+        }
+    }
 }

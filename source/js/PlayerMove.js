@@ -3,15 +3,16 @@ var CurrentPlayer_Key = localStorage.getItem("player_info");
  
 $(document).ready(function () {
     // 역직렬화
-    var PlayerStatus = JSON.parse(PlayerStatus_Key);
-    var CurrentPlayer = JSON.parse(CurrentPlayer_Key);
+    let PlayerStatus = JSON.parse(PlayerStatus_Key);
+    let CurrentPlayer = JSON.parse(CurrentPlayer_Key);
 
     // 현재 선택된 플레이어 넘버
-    var playerNum = CurrentPlayer["current_player"];
-    var img_src = PlayerStatus[playerNum].ingame_src;
+    let playerNum = CurrentPlayer["current_player"];
+    let img_src = PlayerStatus[playerNum].ingame_src;
 
     PlayerChoice(img_src);
     mouseLocation();
+    Player_N_Monster_crash(1,1);
 });
 // 캐릭터 이미지 선택
 function PlayerChoice(img_src){
@@ -23,10 +24,10 @@ function PlayerChoice(img_src){
 // 이미지 커팅
 function Cut_Player_Img(imgs) {
 
-    var wing1 = document.querySelector('#wing1');
-    var wing2 = document.querySelector('#wing2');
-    var ctx1 = wing1.getContext("2d");
-    var ctx2 = wing2.getContext("2d");
+    let wing1 = document.querySelector('#wing1');
+    let wing2 = document.querySelector('#wing2');
+    let ctx1 = wing1.getContext("2d");
+    let ctx2 = wing2.getContext("2d");
 
     let WingCutImg = new Image();
     WingCutImg.src = imgs;
@@ -44,8 +45,8 @@ function mouseLocation() {
         e.preventDefault();
 
         // 플레이어의 현재 좌표
-        var Location_Top = $("#ingame_player").position().top;
-        var Location_Left = $("#ingame_player").position().left;
+        let Location_Top = $("#ingame_player").position().top;
+        let Location_Left = $("#ingame_player").position().left;
 
         // 마우스 현재 좌표
         startX = e.clientX; // left
@@ -53,8 +54,8 @@ function mouseLocation() {
 
         // 마우스 드래그 상태
         $(document).mousemove(function (e) {
-            var moveX = e.clientX - startX + Location_Left;
-            var moveY = e.clientY - startY + Location_Top;
+            let moveX = e.clientX - startX + Location_Left;
+            let moveY = e.clientY - startY + Location_Top;
 
             $('#ingame_player').css({
                 left: moveX
@@ -68,7 +69,9 @@ function mouseLocation() {
             $('#ArrowPosition').css({
                 left: 19+moveX
             })
-            
+            $('#Player_HitBox').css({
+                left: moveX
+            })
 
         });
         // 마우스 드래그 상태가 아닐 때
@@ -78,4 +81,28 @@ function mouseLocation() {
         })
     });
 
+}
+function Player_N_Monster_crash(monster_LocationX, monster_LocationY){
+
+    let A_X, A_Y, A_W, A_H, B_X, B_Y, B_W, B_H;
+    //A = PLAYER B = OTHER
+    A_X = $("#Player_HitBox").position().left;
+    A_Y = $("#Player_HitBox").position().top;
+    A_W = $("#Player_HitBox").width();
+    A_H = $("#Player_HitBox").height();
+    B_X;
+    B_Y;
+    B_W;
+    B_H;
+
+    if((B_X+B_W)>=A_X && (A_X+A_W)>=B_X){
+        if((B_Y+B_H)>=A_Y && (A_Y+A_H)>=B_Y){
+            console.log("플레이어와 상대 객체와 충돌 발생!");
+
+            // 1. 상대 객체의 id나 클래스가 몬스터인 경우
+
+            // 2. 상대 객체의 id나 클래스가 아이템인 경우
+            
+        }
+    }
 }

@@ -70,6 +70,18 @@
     z-index: 3;
 }
 
+#Player_HitBox{
+    position: absolute;
+    border: 4px solid orange;
+    width: 32px;
+    height: 106px;
+    z-index: 5;
+    /*위치는 #ingame_player와 동일*/
+    top : 100%;
+    left: 46.545%;
+    transform: translateY(-208px); /*208 = 128(크기) + 80(이격)*/
+    
+}
 @keyframes rotate-axis1 {
     0% {
         transform: perspective(900px) rotateY(0deg);

@@ -47,6 +47,9 @@
     <!--score.js-->
     <script src="../js/score.js"></script>
 
+    <!--monster.js-->
+    <script src="../js/monster.js"></script>
+
 </head>
 <!--heart.js 에서 addheart, minusheart 함수로 플레이어와 몬스터 충돌 시 체력 감소-->
 
@@ -54,6 +57,7 @@
 
 
     <div class="container">
+        <button id="btn1_test">체력 -1</button>
         <div class="slider-container">
             <ul class="scroll">
                 <li>
@@ -151,7 +155,7 @@
             <div id="wing2_axis">
                 <canvas id="wing2" class="wing"></canvas>
             </div>
-
+            <div id="Player_HitBox"></div>
         </div>
 
         <!--플레이어 공격(투사체) 관련-->
