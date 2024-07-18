@@ -1,5 +1,5 @@
-//아
 const container1 = document.querySelector(".monster-container");
+let position_arr = [];
 
 //랜덤 함수 min~max 범위의 숫자를 랜덤하게 출력
 function rand(min, max) {
@@ -260,6 +260,7 @@ function line_set(n){
 
     //콘테이너에 몬스터라인 추가
     container1.appendChild(generation_line);
+    monster_position()
 
     //애니메이션 끝날시 삭제
     generation_line.addEventListener('animationend', () =>{
@@ -267,6 +268,39 @@ function line_set(n){
     });
 }
 
-//몬스터 생성을 사용하고 싶다면 create_line() 만 가져가서 사용하심 됩니다.
+function monster_position() {
+    // 결과를 저장할 배열
+    let positions = [];
 
+    // 'line' 클래스의 각 div 요소를 순회
+    $('.line').each(function(){
+        // 현재 'line' 요소 내에서 'monster' 또는 'treasure' 클래스를 가진 div 요소를 찾기
+        $(this).find('div.monster, div.treasure').each(function(){
+            // 요소의 위치와 크기 정보 가져오기
+            let offset = $(this).offset();
+            let width = $(this).outerWidth();
+            let height = $(this).outerHeight();
+
+            // 오른쪽 아래와 왼쪽 아래 위치 계산
+            let rightBottom = {
+                x: offset.left + width,
+                y: offset.top + height
+            };
+            let leftBottom = {
+                x: offset.left,
+                y: offset.top + height
+            };
+
+            // 위치 정보를 배열에 추가
+            positions.push({
+                element: this,
+                rightBottom: rightBottom,
+                leftBottom: leftBottom
+            });
+        });
+    });
+    console.log(positions);
+}
+
+//몬스터 생성을 사용하고 싶다면 create_line() 만 가져가서 사용하심 됩니다.
 //일반 몬스터는 <div class=monster>로 생성되고 보물상자는 <div class=trasure>로 생성됩니다.
