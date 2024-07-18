@@ -1,21 +1,22 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Game</title>
     <script src="https://code.jquery.com/jquery-3.7.1.js"></script>
     <!--슬라이더 외부 라이브러리 js-->
     <script src="../js/infiniteSlide.js"></script>
-     <!--배경 슬라이더 js-->
-     <script>    
-		$(function () {
-			$('.scroll').infiniteslide({
-				direction: 'down',
-				pauseonhover: false,
-                speed : 380
-			});
-		});
+    <!--배경 슬라이더 js-->
+    <script>
+        $(function () {
+            $('.scroll').infiniteslide({
+                direction: 'down',
+                pauseonhover: false,
+                speed: 380
+            });
+        });
     </script>
     <!-- 거리 재기.. -->
     <script src="../js/distance.js"></script>
@@ -27,9 +28,31 @@
     <!--구글 폰트...-->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Staatliches&display=swap" rel="stylesheet">  
+    <link href="https://fonts.googleapis.com/css2?family=Staatliches&display=swap" rel="stylesheet">
+
+    <!--Player 요소-->
+    <!--Player.css-->
+    <link rel="stylesheet" href="../css/Player.css">
+    <!--PlayerMove.js-->
+    <script src="../js/PlayerMove.js"></script>
+    <!--PlayerAttack.js-->
+    <script src="../js/PlayerAttack.js" type="module"></script>
+    <!--PlayerStatus.js / 상위에 올려야함-->
+    <script src="../js/PlayerStatus.js" type="module"></script>
+    <!--init.js-->
+    <script src="../js/init.js" type="module"></script>
+
+    <!--set_height.js-->
+    <script src="../js/set_height.js"></script>
+    <!--score.js-->
+    <script src="../js/score.js"></script>
+
 </head>
+<!--heart.js 에서 addheart, minusheart 함수로 플레이어와 몬스터 충돌 시 체력 감소-->
+
 <body oncontextmenu="return false" ondragstart="return false" onselectstart="return false">
+
+
     <div class="container">
         <div class="slider-container">
             <ul class="scroll">
@@ -50,11 +73,15 @@
         <!-- 점수랑 골드 창.. -->
         <div class="content-score">
             <div class="score">
-                <span class="total-score"><p>122221</p></span>
+                <span class="total-score">
+                    <p>122221</p>
+                </span>
             </div>
             <div class="score">
                 <img src="../images/Item/item_coin.png">
-                    <span class="total-coin"><p>50G</p></span>
+                <span class="total-coin">
+                    <p>50G</p>
+                </span>
             </div>
         </div>
         <!-- 거리 -->
@@ -62,38 +89,81 @@
             0m
         </div>
         <!-- 체력 표시칸.. -->
-         <div class="heart">
-                <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="red" class="bi bi-suit-heart-fill" viewBox="0 0 16 16">
-                    <path d="M4 1c2.21 0 4 1.755 4 3.92C8 2.755 9.79 1 12 1s4 1.755 4 3.92c0 3.263-3.234 4.414-7.608 9.608a.513.513 0 0 1-.784 0C3.234 9.334 0 8.183 0 4.92 0 2.755 1.79 1 4 1"/>
-                </svg>
-                <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="red" class="bi bi-suit-heart-fill" viewBox="0 0 16 16">
-                    <path d="M4 1c2.21 0 4 1.755 4 3.92C8 2.755 9.79 1 12 1s4 1.755 4 3.92c0 3.263-3.234 4.414-7.608 9.608a.513.513 0 0 1-.784 0C3.234 9.334 0 8.183 0 4.92 0 2.755 1.79 1 4 1"/>
-                </svg>
-                <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="red" class="bi bi-suit-heart-fill" viewBox="0 0 16 16">
-                    <path d="M4 1c2.21 0 4 1.755 4 3.92C8 2.755 9.79 1 12 1s4 1.755 4 3.92c0 3.263-3.234 4.414-7.608 9.608a.513.513 0 0 1-.784 0C3.234 9.334 0 8.183 0 4.92 0 2.755 1.79 1 4 1"/>
-                </svg>
-                <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="red" class="bi bi-suit-heart-fill" viewBox="0 0 16 16">
-                    <path d="M4 1c2.21 0 4 1.755 4 3.92C8 2.755 9.79 1 12 1s4 1.755 4 3.92c0 3.263-3.234 4.414-7.608 9.608a.513.513 0 0 1-.784 0C3.234 9.334 0 8.183 0 4.92 0 2.755 1.79 1 4 1"/>
-                </svg>
-                <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="red" class="bi bi-suit-heart-fill" viewBox="0 0 16 16">
-                    <path d="M4 1c2.21 0 4 1.755 4 3.92C8 2.755 9.79 1 12 1s4 1.755 4 3.92c0 3.263-3.234 4.414-7.608 9.608a.513.513 0 0 1-.784 0C3.234 9.334 0 8.183 0 4.92 0 2.755 1.79 1 4 1"/>
-                </svg>
-                <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="red" class="bi bi-suit-heart-fill" viewBox="0 0 16 16">
-                    <path d="M4 1c2.21 0 4 1.755 4 3.92C8 2.755 9.79 1 12 1s4 1.755 4 3.92c0 3.263-3.234 4.414-7.608 9.608a.513.513 0 0 1-.784 0C3.234 9.334 0 8.183 0 4.92 0 2.755 1.79 1 4 1"/>
-                </svg>
-                <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="red" class="bi bi-suit-heart-fill" viewBox="0 0 16 16">
-                    <path d="M4 1c2.21 0 4 1.755 4 3.92C8 2.755 9.79 1 12 1s4 1.755 4 3.92c0 3.263-3.234 4.414-7.608 9.608a.513.513 0 0 1-.784 0C3.234 9.334 0 8.183 0 4.92 0 2.755 1.79 1 4 1"/>
-                </svg>
-                <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="red" class="bi bi-suit-heart-fill" viewBox="0 0 16 16">
-                    <path d="M4 1c2.21 0 4 1.755 4 3.92C8 2.755 9.79 1 12 1s4 1.755 4 3.92c0 3.263-3.234 4.414-7.608 9.608a.513.513 0 0 1-.784 0C3.234 9.334 0 8.183 0 4.92 0 2.755 1.79 1 4 1"/>
-                </svg>
-                <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="red" class="bi bi-suit-heart-fill" viewBox="0 0 16 16">
-                    <path d="M4 1c2.21 0 4 1.755 4 3.92C8 2.755 9.79 1 12 1s4 1.755 4 3.92c0 3.263-3.234 4.414-7.608 9.608a.513.513 0 0 1-.784 0C3.234 9.334 0 8.183 0 4.92 0 2.755 1.79 1 4 1"/>
-                </svg>
-                <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="red" class="bi bi-suit-heart-fill" viewBox="0 0 16 16">
-                    <path d="M4 1c2.21 0 4 1.755 4 3.92C8 2.755 9.79 1 12 1s4 1.755 4 3.92c0 3.263-3.234 4.414-7.608 9.608a.513.513 0 0 1-.784 0C3.234 9.334 0 8.183 0 4.92 0 2.755 1.79 1 4 1"/>
-                </svg>
-         </div>
+        <div class="heart">
+            <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="red" class="bi bi-suit-heart-fill"
+                viewBox="0 0 16 16">
+                <path
+                    d="M4 1c2.21 0 4 1.755 4 3.92C8 2.755 9.79 1 12 1s4 1.755 4 3.92c0 3.263-3.234 4.414-7.608 9.608a.513.513 0 0 1-.784 0C3.234 9.334 0 8.183 0 4.92 0 2.755 1.79 1 4 1" />
+            </svg>
+            <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="red" class="bi bi-suit-heart-fill"
+                viewBox="0 0 16 16">
+                <path
+                    d="M4 1c2.21 0 4 1.755 4 3.92C8 2.755 9.79 1 12 1s4 1.755 4 3.92c0 3.263-3.234 4.414-7.608 9.608a.513.513 0 0 1-.784 0C3.234 9.334 0 8.183 0 4.92 0 2.755 1.79 1 4 1" />
+            </svg>
+            <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="red" class="bi bi-suit-heart-fill"
+                viewBox="0 0 16 16">
+                <path
+                    d="M4 1c2.21 0 4 1.755 4 3.92C8 2.755 9.79 1 12 1s4 1.755 4 3.92c0 3.263-3.234 4.414-7.608 9.608a.513.513 0 0 1-.784 0C3.234 9.334 0 8.183 0 4.92 0 2.755 1.79 1 4 1" />
+            </svg>
+            <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="red" class="bi bi-suit-heart-fill"
+                viewBox="0 0 16 16">
+                <path
+                    d="M4 1c2.21 0 4 1.755 4 3.92C8 2.755 9.79 1 12 1s4 1.755 4 3.92c0 3.263-3.234 4.414-7.608 9.608a.513.513 0 0 1-.784 0C3.234 9.334 0 8.183 0 4.92 0 2.755 1.79 1 4 1" />
+            </svg>
+            <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="red" class="bi bi-suit-heart-fill"
+                viewBox="0 0 16 16">
+                <path
+                    d="M4 1c2.21 0 4 1.755 4 3.92C8 2.755 9.79 1 12 1s4 1.755 4 3.92c0 3.263-3.234 4.414-7.608 9.608a.513.513 0 0 1-.784 0C3.234 9.334 0 8.183 0 4.92 0 2.755 1.79 1 4 1" />
+            </svg>
+            <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="red" class="bi bi-suit-heart-fill"
+                viewBox="0 0 16 16">
+                <path
+                    d="M4 1c2.21 0 4 1.755 4 3.92C8 2.755 9.79 1 12 1s4 1.755 4 3.92c0 3.263-3.234 4.414-7.608 9.608a.513.513 0 0 1-.784 0C3.234 9.334 0 8.183 0 4.92 0 2.755 1.79 1 4 1" />
+            </svg>
+            <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="red" class="bi bi-suit-heart-fill"
+                viewBox="0 0 16 16">
+                <path
+                    d="M4 1c2.21 0 4 1.755 4 3.92C8 2.755 9.79 1 12 1s4 1.755 4 3.92c0 3.263-3.234 4.414-7.608 9.608a.513.513 0 0 1-.784 0C3.234 9.334 0 8.183 0 4.92 0 2.755 1.79 1 4 1" />
+            </svg>
+            <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="red" class="bi bi-suit-heart-fill"
+                viewBox="0 0 16 16">
+                <path
+                    d="M4 1c2.21 0 4 1.755 4 3.92C8 2.755 9.79 1 12 1s4 1.755 4 3.92c0 3.263-3.234 4.414-7.608 9.608a.513.513 0 0 1-.784 0C3.234 9.334 0 8.183 0 4.92 0 2.755 1.79 1 4 1" />
+            </svg>
+            <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="red" class="bi bi-suit-heart-fill"
+                viewBox="0 0 16 16">
+                <path
+                    d="M4 1c2.21 0 4 1.755 4 3.92C8 2.755 9.79 1 12 1s4 1.755 4 3.92c0 3.263-3.234 4.414-7.608 9.608a.513.513 0 0 1-.784 0C3.234 9.334 0 8.183 0 4.92 0 2.755 1.79 1 4 1" />
+            </svg>
+            <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="red" class="bi bi-suit-heart-fill"
+                viewBox="0 0 16 16">
+                <path
+                    d="M4 1c2.21 0 4 1.755 4 3.92C8 2.755 9.79 1 12 1s4 1.755 4 3.92c0 3.263-3.234 4.414-7.608 9.608a.513.513 0 0 1-.784 0C3.234 9.334 0 8.183 0 4.92 0 2.755 1.79 1 4 1" />
+            </svg>
+        </div>
+
+        <!--플레이어 이동 관련 / div id를 쓰지 않음. 삭제할거면 해-->
+        <div id="playerImg" draggable="true">
+            <img id="ingame_player" class="wing">
+            <div id="wing1_axis">
+                <canvas id="wing1" class="wing"></canvas>
+            </div>
+            <div id="wing2_axis">
+                <canvas id="wing2" class="wing"></canvas>
+            </div>
+
+        </div>
+
+        <!--플레이어 공격(투사체) 관련-->
+        <div id="playerAttack">
+            <div id="ArrowPosition"></div>
+            <div id="ClonePosition"></div>
+        </div>
+
+
     </div>
+
+
 </body>
+
 </html>

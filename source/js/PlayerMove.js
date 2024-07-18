@@ -66,7 +66,7 @@ function mouseLocation() {
                 left: -81+moveX
             })
             $('#ArrowPosition').css({
-                left: -6+moveX
+                left: 19+moveX
             })
             
 

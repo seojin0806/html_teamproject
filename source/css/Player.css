@@ -5,35 +5,71 @@
 }
 #ingame_player {
     position: absolute;
-    display: block;
-    top: 622px;
-    left: 800px;
     z-index: 4;
+    display: block;
+    /* 기존 => top: 622px;  left: 800px;
+    550 : 19 = 100 : b  ->  b = 3.45454545454545...
+    50 - b = 46.54545454545455 */
+    top : 100%;
+    left: 46.545%;
+    transform: translateY(-208px); /*208 = 128(크기) + 80(이격)*/
+    
     clip: rect(10px, 45px, 115px, 0);
 }
-/* wing1 = top: 686px; left: 729px; */
+
 #wing1 {
     position: absolute;
-    top: 56px;
-    left: 11px;
-    z-index: 3;
+    /* 기존 = top: 686px; left: 729px; */
+    top: -64px;  left:11px;
     transform: rotate(15deg);
 }
-/* wing2 = top: 686px; left: 609px; */
+
 #wing2 {
     position: absolute;
-    top: 56px;
-    left: -110px;
-    z-index: 3;
+    /* 기존 = top: 686px; left: 609px; */
+    top: -64px;  left: -116px;
     transform: scale(-1, 1) rotate(15deg);
 }
 
 #wing1_axis {
     position: absolute;
     width: 200px;   height: 100px;
-    top: 630px;    left: 719px;
+    /*기존 = top: 630px;     left: 719px;
+    550 : 200 = 100 : a  ->  a = 36.36363636363636...
+    50 - (a / 2) = 31.818181...*/
+    top : 90%;     left: 31.818%;
+    z-index: 3;
     animation: rotate-axis1 1.5s linear infinite;
 }
+
+#wing2_axis {
+    position: absolute;
+    width: 200px;   height: 100px;
+    /*기존 = top: 630px;     left: 719px;*/
+    top : 90%;     left: 31.818%;
+    z-index: 3;
+    animation: rotate-axis2 1.5s linear infinite;
+}
+
+#ArrowPosition {
+    position: absolute;
+    z-index: 4;
+    /*기존 = top: 582px;   left: 794px;*/
+    top : 70%;     left: 50%;
+    transform: translateX(-25px);
+    width: 50px;
+    height: 50px;
+}
+
+.arrow {
+    position: absolute;
+    background-image: url(../images/Sfx/invincible_02.png);
+    background-size: cover;
+    width: 32px;
+    height: 64px;
+    z-index: 3;
+}
+
 @keyframes rotate-axis1 {
     0% {
         transform: perspective(900px) rotateY(0deg);
@@ -51,12 +87,7 @@
         transform: perspective(700px) rotateY(0deg);
     }
 }
-#wing2_axis {
-    position: absolute;
-    width: 200px;   height: 100px;
-    top: 630px;    left: 719px;
-    animation: rotate-axis2 1.5s linear infinite;
-}
+
 @keyframes rotate-axis2 {
     0% {
         transform: perspective(900px) rotateY(0deg);
@@ -73,21 +104,4 @@
     100% {
         transform: perspective(700px) rotateY(0deg);
     }
-}
-#ArrowPosition {
-    position: absolute;
-    top: 582px;
-    left: 794px;
-    z-index: 2;
-    width: 50px;
-    height: 50px;
-}
-
-.arrow {
-    position: absolute;
-    background-image: url(../images/Sfx/invincible_02.png);
-    background-size: cover;
-    width: 32px;
-    height: 64px;
-    z-index: 3;
 }

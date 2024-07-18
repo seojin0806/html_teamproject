@@ -35,7 +35,7 @@ $(document).ready(function () {
         idNum++;
     }, reloading);
 
-
+    //테스트를 위해 넣은 코드. 나중에 삭제
     $("#btn1").click(function () {
         ingame_status.HP = 0;
     });
