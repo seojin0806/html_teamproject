@@ -1,5 +1,5 @@
-const btn1 = document.getElementById("creates")
-const container = document.querySelector('.monster-container');
+//아
+const container1 = document.querySelector(".monster-container");
 
 //랜덤 함수 min~max 범위의 숫자를 랜덤하게 출력
 function rand(min, max) {
@@ -27,6 +27,8 @@ function create_line(){
     };
 
 }
+
+
 
 //몬스터 생성 함수
 function create_monster(generation_line){
@@ -135,8 +137,6 @@ function create_monster(generation_line){
             const blow = document.createElement('div');
             blow.classList.add('burst');
             monster.appendChild(blow);
-
-            set_score(score);
             
 
             monster.className = "empty_enemy";
@@ -259,7 +259,7 @@ function line_set(n){
     }
 
     //콘테이너에 몬스터라인 추가
-    container.appendChild(generation_line);
+    container1.appendChild(generation_line);
 
     //애니메이션 끝날시 삭제
     generation_line.addEventListener('animationend', () =>{
