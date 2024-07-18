@@ -37,3 +37,40 @@
         top: 2000px;
     }
 }
+
+.meteor-warning {
+    width: 100%;
+    position: relative;
+    display: none;
+}
+
+.meteor-warning.active {
+    animation-name: meteor_warning;
+    animation-duration: var(--meteor_war_ani_dur);
+    animation-fill-mode: forwards;
+}
+
+@keyframes meteor_warning {
+    0% {
+        scale: 0.8;
+        opacity: 0;
+    }
+
+    25% {
+        scale: 1;
+        opacity: 1;
+    }
+
+    50% {
+        scale: 0.8;
+    }
+
+    75% {
+        scale: 1;
+    }
+
+    100% {
+        scale: 0.8;
+        opacity: 0;
+    }
+}
