@@ -125,9 +125,9 @@ function delete_boss() {
 function clear_stage() {
     // 보스 처치 모션 추가
     let boss_img_tag = document.querySelector('.boss-zone');
+    boss_gold_drop();
     boss_img_tag.classList.add('fadeout')
     delete_boss();
-    gold = gold + 100 * difficulty
     if (difficulty < 5) {
         difficulty++;
     } 
@@ -224,4 +224,13 @@ function remove_boss_zone() {
 //script 불러오실때 defer 붙여주세요.
 function get_difficulty(){
     return difficulty;
+}
+
+function boss_gold_drop() {
+    // container 제일 뒤에
+    // <div id="boss-drop-zone" style="top: 0; left: 275px; width: 10px; height: 700px; position: absolute;"></div>
+    // 추가해야 함.
+    let boss_drop_zone = document.querySelector('#boss-drop-zone')
+    drop_gem(boss_drop_zone, difficulty);
+    drop_gold(boss_drop_zone, difficulty);
 }
