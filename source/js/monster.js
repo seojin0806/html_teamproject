@@ -1,4 +1,5 @@
 const container1 = document.querySelector(".monster-container");
+const btn1 = document.getElementById("creates-1");
 let position_arr = [];
 
 //랜덤 함수 min~max 범위의 숫자를 랜덤하게 출력
@@ -28,7 +29,9 @@ function create_line(){
 
 }
 
-
+btn1.addEventListener('click', () =>{
+    create_line();
+})
 
 //몬스터 생성 함수
 function create_monster(generation_line){
@@ -115,7 +118,7 @@ function create_monster(generation_line){
             while (monster.hasChildNodes()) {
                 monster.removeChild(monster.firstChild);
             }
-
+            //골드 생성
             switch(now_difficult){
                 case 1:
                     drop_gold(monster,1);
@@ -133,12 +136,18 @@ function create_monster(generation_line){
                     drop_gold(monster,5);
                     break;
             }
-
+            //물약 생성
+            var item1_rand = rand(1,100);
+            if(item1_rand > 94){
+                get_randitem(monster)
+            }
+            //점수 올리기 및 피격 효과
+            jQuery.addScore(score)
             const blow = document.createElement('div');
             blow.classList.add('burst');
             monster.appendChild(blow);
-            
 
+        
             monster.className = "empty_enemy";
 
         }
@@ -164,7 +173,30 @@ function create_treasure(generation_line){
     trasure.appendChild(createSprite('tbody'));
 
     //체력 생성
-    var hp = 1;
+    //체력 생성
+    var now_difficult = get_difficult();
+    switch(now_difficult){
+        case 1:
+            var hp = 3;
+            var score = 150 * now_difficult
+            break;
+        case 2:
+            var hp = 4;
+            var score = 150 * now_difficult
+            break;
+        case 3:
+            var hp = 5;
+            var score = 150 * now_difficult
+            break;
+        case 4:
+            var hp = 6;
+            var score = 150 * now_difficult
+            break;
+        case 5:
+            var hp = 7;
+            var score = 150 * now_difficult
+            break;
+    }
 
     // HTML에 추가
     generation_line.appendChild(trasure);
@@ -204,11 +236,12 @@ function create_treasure(generation_line){
                     drop_gem(trasure,10);
                     break;
             }
-
+            jQuery.addScore(score);
             trasure.className = "empty_enemy";
 
         }
     });
+
 }
 //빈공간 생성 함수
 function create_empty(generation_line){
@@ -250,7 +283,7 @@ function line_set(n){
             create_empty(generation_line);
         }else{
             //1%의 확률로 황금상자
-            var gold_trasure = rand(1,100);
+            var gold_trasure = rand(1,3);
             if (gold_trasure===1)
                 create_treasure(generation_line);
             else
@@ -260,7 +293,6 @@ function line_set(n){
 
     //콘테이너에 몬스터라인 추가
     container1.appendChild(generation_line);
-    monster_position()
 
     //애니메이션 끝날시 삭제
     generation_line.addEventListener('animationend', () =>{
@@ -270,7 +302,7 @@ function line_set(n){
 
 function monster_position() {
     // 결과를 저장할 배열
-    let positions = [];
+    let monster_positions = [];
 
     // 'line' 클래스의 각 div 요소를 순회
     $('.line').each(function(){
@@ -292,15 +324,16 @@ function monster_position() {
             };
 
             // 위치 정보를 배열에 추가
-            positions.push({
+            monster_positions.push({
                 element: this,
                 rightBottom: rightBottom,
                 leftBottom: leftBottom
             });
         });
     });
-    console.log(positions);
+    console.log(monster_positions);
 }
+
 
 //몬스터 생성을 사용하고 싶다면 create_line() 만 가져가서 사용하심 됩니다.
 //일반 몬스터는 <div class=monster>로 생성되고 보물상자는 <div class=trasure>로 생성됩니다.

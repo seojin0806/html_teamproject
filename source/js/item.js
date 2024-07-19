@@ -49,6 +49,7 @@ function item_call(monster){
 
     //gold 충돌 이벤트 일단은 hover로 하겠습니다.
     item.addEventListener('click', () =>{
+        jQuery.addHeart();
         item.remove();
     });
 }
