@@ -26,6 +26,7 @@ function init_stage_boss(difficulty) {
         HP: 10 * difficulty,
         attack_pattern_1_timer_id: null, // summon dragons pattern
         attack_pattern_2_timer_id: null, // meteor fall pattern
+        arrow_collision_timer_id: null
     }
     if(difficulty == 5) {
         boss.shape = "../css/boss3.css";
@@ -52,6 +53,7 @@ function init_stage_boss(difficulty) {
 
     time_limit = 60;
     setTimeout(time_limit_timer, 1000);
+    boss.arrow_collision_timer_id = setInterval(arrow_collision_detection, 100);
 }
 
 function time_limit_timer() {
@@ -102,6 +104,8 @@ function meteorfunc() {
 }
 
 function delete_boss() {
+    if(null != boss.arrow_collision_timer_id)
+        clearInterval(boss.arrow_collision_timer_id);
     if (null != boss.attack_pattern_1_timer_id)
         clearInterval(boss.attack_pattern_1_timer_id);
     if (null != boss.attack_pattern_2_timer_id)
@@ -140,6 +144,21 @@ function meteor_collision_detection() {
                 jQuery.minusHeart(); // 체력 감소
                 }
             }
+    }
+}
+
+function arrow_collision_detection() {
+    let arrow = document.querySelector('#ClonePosition').firstChild.getBoundingClientRect();
+    let target = document.querySelector('.boss-shape').getBoundingClientRect();
+    if(target.left <= arrow.left && arrow.left <= target.right){
+        if((target.top <= arrow.top && arrow.top <= target.bottom) || (target.top <= arrow.bottom && arrow.bottom <= target.bottom)) {
+            document.querySelector('#ClonePosition').firstChild.remove();
+            // boss.HP -= 캐릭터공격력;
+        }
+    } else if(target.left <= arrow.right && arrow.right <= target.right) {
+        if((target.top <= arrow.top && arrow.top <= target.bottom) || (target.top <= arrow.bottom && arrow.bottom <= target.bottom)) {
+            document.querySelector('#ClonePosition').firstChild.remove();
+            // boss.HP -= 캐릭터공격력;
         }
     }
 }
