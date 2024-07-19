@@ -220,3 +220,8 @@ function remove_boss_zone() {
     document.querySelector('.container').removeChild(boss_zone);
     document.querySelector('.container').removeChild(meteor_zone);
 }
+
+//script 불러오실때 defer 붙여주세요.
+function get_difficulty(){
+    return difficulty;
+}
