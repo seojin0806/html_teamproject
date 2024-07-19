@@ -28,10 +28,6 @@
      <link rel="preconnect" href="https://fonts.googleapis.com">
      <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
      <link href="https://fonts.googleapis.com/css2?family=Do+Hyeon&display=swap" rel="stylesheet">
-
-     <!--set_height.js-->
-    <script src="../js/set_height.js"></script>
-    
 </head>
 <body oncontextmenu="return false" ondragstart="return false" onselectstart="return false">
     <div class="container">
@@ -59,14 +55,14 @@
         </div>
         <div class="end-summary">
             <div class="distance">
-                <span><p>비행 거리</p><p>1000M</p></span>
+                <span><p>비행 거리</p><p class="distance-display">1000M</p></span>
             </div>
             <div class="score-gold">
                 <div class="content">
                     <span><p>점수</p><p>골드</p></span>
                 </div>
                 <div>
-                    <span><p>11200M</p><p>50G</p></span>
+                    <span><p class="score-display">11200M</p><p class="gold-display">50G</p></span>
                 </div>
             </div>
         </div>
@@ -81,5 +77,8 @@
             </div>
         </div>
     </div>
+
+    <!--js-->
+    <script src="../js/score.js"></script>;
 </body>
 </html>
