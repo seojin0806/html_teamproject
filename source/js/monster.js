@@ -56,7 +56,7 @@ function create_monster(generation_line){
     monster.appendChild(createSprite('eyes-right'));
 
     //체력 생성
-    var now_difficult = get_difficult();
+    var now_difficult = get_difficulty();
     switch(now_difficult){
         case 1:
             if (random_s === 1){ //노란색 몬스터는 체력 +1
@@ -206,7 +206,7 @@ function create_treasure(generation_line){
         blow.classList.add('burst');
         trasure.appendChild(blow);
         hp = hp - 1;
-        var now_difficult = get_difficult();
+        var now_difficult = get_difficulty();
         //체력 감소를 먼저시키고 체력이 0일때 삭제
         //난이도 조정도 고려해봐야함... 흠.. 난이도 체크 함수를 생각해봐야겠음.
         if(hp===0){
