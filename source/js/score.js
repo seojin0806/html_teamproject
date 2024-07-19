@@ -1,7 +1,21 @@
-let score = 0;
-
-jQuery.addScore = function(value){
-    score += value;
-    $('#score').text("");
-    $('#score').text(`${score}`);
+function set_score(n) {
+    var score = window.localStorage.getItem("result_score");
+    score = Number(score) + Number(n) ;
+    window.localStorage.setItem("result_score",score);
+    $('.total-score').text(`n`);
 }
+
+var score_display = document.querySelector(".score-display");
+var gold_display = document.querySelector(".gold-display");
+var distance_display = document.querySelector(".distance-display");
+
+var distance1 = window.localStorage.getItem("result_distance");
+var gold = window.localStorage.getItem("result_gold");
+var score = window.localStorage.getItem("result_score");
+
+score_display.innerHTML =  score;
+gold_display.innerHTML = gold + "G";
+distance_display.innerHTML = distance1 + "M";
+
+var total_gold = document.querySelector(".money");
+total_gold.innerHTML = window.localStorage.getItem("gold")+" G"
