@@ -11,4 +11,4 @@ gold_display.innerHTML = gold + "G";
 distance_display.innerHTML = distance1 + "M";
 
 var total_gold = document.querySelector(".money");
-total_gold.innerHTML = window.localStorage.getItem("gold")+" G"
+total_gold.innerHTML = window.localStorage.getItem("gold")+" G" + "&nbsp;"
