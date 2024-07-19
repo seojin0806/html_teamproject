@@ -15,7 +15,9 @@ let root = document.querySelector(':root');
 
 function init_stage_boss(difficulty) {
     if (boss != null) { delete_boss(); }
-    if(difficulty == null || !(0 < difficulty && difficulty < 6)) { return 0; }
+    if(difficulty == null || !(0 < difficulty && difficulty < 6)) { return console.log('난이도가 1 ~ 5 사이가 아님'); }
+
+    add_boss_zone(); 
 
     let field = document.querySelector('.slider-container');
     let link = document.querySelector('#boss-css');
@@ -114,6 +116,7 @@ function delete_boss() {
     boss = null;
     time_limit = null;
     way = null;
+    setTimeout(remove_boss_zone, boss_fadeout_ani_dur * 1000);
 }
 function clear_stage() {
     // 보스 처치 모션 추가
@@ -161,4 +164,55 @@ function arrow_collision_detection() {
             // boss.HP -= 캐릭터공격력;
         }
     }
+}
+
+function add_boss_zone() {
+    let boss_zone = document.createElement('div');
+    let headbody = document.createElement('div');
+    let left_arm = document.createElement('div');
+    let right_arm = document.createElement('div');
+
+    boss_zone.classList.add('boss-zone');
+    headbody.classList.add('boss-shape');
+    headbody.classList.add('headbody');
+    left_arm.classList.add('boss-shape');
+    left_arm.classList.add('left-arm');
+    right_arm.classList.add('boss-shape');
+    right_arm.classList.add('right-arm');
+
+    boss_zone.appendChild(headbody);
+    boss_zone.appendChild(left_arm);
+    boss_zone.appendChild(right_arm);
+
+    let meteor_zone = document.createElement('div');
+    meteor_zone.id = 'meteor-zone'
+    let meteor_line;
+    let meteor_warning;
+    let meteor;
+
+    for(let i = 0; i < 5; i++) {
+        meteor_line = document.createElement('div');
+        meteor_warning = document.createElement('img');
+        meteor = document.createElement('img');
+
+        meteor_line.className = 'meteor-line';
+        meteor_warning.className = 'meteor-warning';
+        meteor.className = 'meteor';
+
+        meteor_warning.setAttribute('src', '../images/Sfx/meteor-warning.png');
+        meteor.setAttribute('src', './../images/Monsters/meteor.png');
+
+        meteor_zone.appendChild(meteor_line);
+        meteor_line.appendChild(meteor_warning);
+        meteor_line.appendChild(meteor);
+    }
+
+    document.querySelector('.container').prepend(boss_zone);
+    document.querySelector('.container').prepend(meteor_zone);
+}
+function remove_boss_zone() {
+    let boss_zone = document.querySelector('.boss-zone');
+    let meteor_zone = document.querySelector('#meteor-zone')
+    document.querySelector('.container').removeChild(boss_zone);
+    document.querySelector('.container').removeChild(meteor_zone);
 }
