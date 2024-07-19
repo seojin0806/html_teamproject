@@ -1,10 +1,17 @@
 var boss = null;
 var time_limit;
 var way;
+var difficulty = 1;
 
 var boss_appear_ani_dur = 0.5 ; // 보스 출현 속도 조절
+var boss_fadeout_ani_dur = 2;
 var meteor_war_ani_dur = 2 ; // 운석 경고등 시간 조절
 var meteor_fall_ani_dur = 5; // 운석 낙하 시간 조절
+var meteor_interval = 20;
+
+let root = document.querySelector(':root');
+            root.style.setProperty('--meteor_war_ani_dur', meteor_war_ani_dur + 's');
+            root.style.setProperty('--meteor_fall_ani_dur', meteor_fall_ani_dur + 's');
 
 function init_stage_boss(difficulty) {
     if (boss != null) { delete_boss(); }
@@ -15,13 +22,13 @@ function init_stage_boss(difficulty) {
     let boss_layout = document.querySelector('.boss-zone > div');
 
     boss = {
-        shape: "boss" + difficulty + ".css",
+        shape: "../css/boss" + difficulty + ".css",
         HP: 10 * difficulty,
         attack_pattern_1_timer_id: null, // summon dragons pattern
         attack_pattern_2_timer_id: null, // meteor fall pattern
     }
     if(difficulty == 5) {
-        boss.shape = "boss3.css";
+        boss.shape = "../css/boss3.css";
     }
     $(link).attr('href', boss.shape); // 아 이게 너무 늦게 load가 됨..
     // 위 코드가 너무 늦게 load가 되니까 이후 코드들이 먼저 실행되서 꼬여버림.
@@ -39,9 +46,9 @@ function init_stage_boss(difficulty) {
         });
     }, 1000);
 
-    boss.attack_pattern_1_timer_id = setInterval(summon_dragons, (15 - 1.5 * difiiculty) * 1000); // interval : (15-1.5n) sec
+    // boss.attack_pattern_1_timer_id = setInterval(summon_dragons, (15 - 1.5 * difiiculty) * 1000); // interval : (15-1.5n) sec
     if (2 < difficulty)
-        boss.attack_pattern_2_timer_id = setInterval(meteor_fall, 20 * 1000); // interval : 20 sec
+        boss.attack_pattern_2_timer_id = setInterval(meteor_fall, meteor_interval * 1000); 
 
     time_limit = 60;
     setTimeout(time_limit_timer, 1000);
@@ -52,9 +59,10 @@ function time_limit_timer() {
     if (boss != null && boss.HP <= 0) {
         clear_stage(); // 보스 몬스터 처치
     } else if (boss !== null && time_limit > 0) {
-        time_limit--;
-        $('#time_limit').css('display', 'block');
-        $('#time_limit > span').text(time_limit);
+        // 시간제한 기능을 폐기...함.....ㅠㅠ
+        // time_limit--;
+        // $('#time_limit').css('display', 'block');
+        // $('#time_limit > span').text(time_limit);
         setTimeout(time_limit_timer, 1000);
     } else if (time_limit == 0) {
         delete_boss();

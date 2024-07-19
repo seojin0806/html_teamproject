@@ -1,3 +1,8 @@
+:root {
+    --meteor_war_ani_dur: 2s;
+    --meteor_fall_ani_dur: 5s;
+}
+
 #meteor-zone {
     display: flex;
     height: 100vh;
