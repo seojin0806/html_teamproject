@@ -1,3 +1,5 @@
+var NotEnemy = false;
+
 function arrow_position(){
     let positions_arrow = [];
     // 현재 'line' 요소 내에서 'monster' 또는 'treasure' 클래스를 가진 div 요소를 찾기
@@ -180,8 +182,12 @@ function arrow_monster() {
 } 
 // 플레이어와 몬스터 충돌
 function player_monster(){
+    
     let monsters = monster_position();
     let player = player_position();
+    let ctx1 = $('#ingame_player');
+    let ctx2 = $('#wing1');
+    let ctx3 = $('#wing2');
 
     // 두 배열을 순회하며 충돌 검사
     for (let i = 0; i < monsters.length; i++) {
@@ -199,7 +205,31 @@ function player_monster(){
             ) {
                 if(P_LT.y < M_RB.y && P_RB.y > M_LT.y){
                     //여기다 이벤트를 넣으심 됩니다.
-                    console.log("충돌!");
+                    if(NotEnemy === false){
+                        NotEnemy = true;
+                        jQuery.minusHeart();
+
+                        let timecount = 0;
+                        let interval = setInterval(callback, 500);
+                        function callback() {
+                            if (timecount >= 6){
+                                ctx1.css({opacity : 1.0})
+                                ctx2.css({opacity : 1.0})
+                                ctx3.css({opacity : 1.0})
+                                NotEnemy = false;
+                                clearInterval(interval);
+                            }
+                            else {
+                                console.log("충돌!");
+                                ctx1.css({opacity : 0.5 + (0.5 * (timecount % 2))})
+                                ctx2.css({opacity : 0.5 + (0.5 * (timecount % 2))})
+                                ctx3.css({opacity : 0.5 + (0.5 * (timecount % 2))})
+                                timecount++;
+                            }
+                        }
+
+                    }
+
                 }
             }
         }
