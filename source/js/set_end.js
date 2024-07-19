@@ -8,4 +8,5 @@ $(document).ready(function () {
    });
    let current_player  = JSON.parse(localStorage.getItem("player_info")).current_player;
    $('#img-charac').attr('src', `../images/SD/sd_0${current_player}.png`);
+   console.log(current_player);
 });
