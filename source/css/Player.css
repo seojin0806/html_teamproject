@@ -72,7 +72,6 @@
 
 #Player_HitBox{
     position: absolute;
-    border: 4px solid orange;
     width: 32px;
     height: 106px;
     z-index: 5;

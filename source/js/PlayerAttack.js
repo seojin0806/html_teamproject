@@ -52,8 +52,7 @@ function Clone_Arrow() {
     $("#ArrowPosition").clone().appendTo("#ClonePosition").attr("id", arrowID).attr("class", "arrow");
     $("#" + arrowID).css({
         "top": Location_Top,
-        "left": Location_Left + 9,
-        "border" : "4px solid red"
+        "left": Location_Left + 9
     });
 
 
