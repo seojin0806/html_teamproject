@@ -7,7 +7,6 @@ $(document).ready(function () {
     // 1초 간격으로 실행
     setInterval(timer, 1000);
     setInterval(create_line, 2000);
-    setInterval(set_difficult, 125000); //난이도 조절 함수. 이건 나중에 보스도 봐야할거 같습니다 ....
 });
 
 function timer() {
@@ -28,13 +27,10 @@ function clean_monster(){
     setInterval(create_line, 2000);
 }//보스전 끝나는 곳에 이거 넣어주셔서 원래 속도로 되돌려주세요.
 
-function set_difficult() {
-    if(difficult > 5){
-
-    }else{
-        difficult = difficult + 1;
-    }
+function set_difficult(){
+    difficult++;
 }
+
 function get_difficult(){
     return difficult;
 }
