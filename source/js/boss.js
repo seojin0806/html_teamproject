@@ -160,12 +160,12 @@ function arrow_collision_detection() {
     if(target.left <= arrow.left && arrow.left <= target.right){
         if((target.top <= arrow.top && arrow.top <= target.bottom) || (target.top <= arrow.bottom && arrow.bottom <= target.bottom)) {
             document.querySelector('#ClonePosition').firstChild.remove();
-            // boss.HP -= 캐릭터공격력;
+            boss.HP -= 1;
         }
     } else if(target.left <= arrow.right && arrow.right <= target.right) {
         if((target.top <= arrow.top && arrow.top <= target.bottom) || (target.top <= arrow.bottom && arrow.bottom <= target.bottom)) {
             document.querySelector('#ClonePosition').firstChild.remove();
-            // boss.HP -= 캐릭터공격력;
+            boss.HP -= 1;
         }
     }
 }
