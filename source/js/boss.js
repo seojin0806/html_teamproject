@@ -9,9 +9,13 @@ var meteor_war_ani_dur = 2 ; // 운석 경고등 시간 조절
 var meteor_fall_ani_dur = 5; // 운석 낙하 시간 조절
 var meteor_interval = 20;
 
+$(document).ready(function() {
 let root = document.querySelector(':root');
             root.style.setProperty('--meteor_war_ani_dur', meteor_war_ani_dur + 's');
             root.style.setProperty('--meteor_fall_ani_dur', meteor_fall_ani_dur + 's');
+});
+
+
 
 function init_stage_boss(difficulty) {
     if (boss != null) { delete_boss(); }
@@ -207,8 +211,8 @@ function add_boss_zone() {
         meteor_line.appendChild(meteor);
     }
 
-    document.querySelector('.container').prepend(boss_zone);
-    document.querySelector('.container').prepend(meteor_zone);
+    document.querySelector('.container').appendChild(boss_zone);
+    document.querySelector('.container').appendChild(meteor_zone);
 }
 function remove_boss_zone() {
     let boss_zone = document.querySelector('.boss-zone');
