@@ -1,5 +1,10 @@
 var NotEnemy = false;
-
+function getNotEnemy(){
+    return NotEnemy;
+}
+function setNotEnemy(value){
+    NotEnemy = value;
+}
 function arrow_position(){
     let positions_arrow = [];
     // 현재 'line' 요소 내에서 'monster' 또는 'treasure' 클래스를 가진 div 요소를 찾기
@@ -205,8 +210,9 @@ function player_monster(){
             ) {
                 if(P_LT.y < M_RB.y && P_RB.y > M_LT.y){
                     //여기다 이벤트를 넣으심 됩니다.
-                    if(NotEnemy === false){
-                        NotEnemy = true;
+                    if(getNotEnemy() === false){
+                        setNotEnemy(true);
+
                         jQuery.minusHeart();
 
                         let timecount = 0;
@@ -216,7 +222,7 @@ function player_monster(){
                                 ctx1.css({opacity : 1.0})
                                 ctx2.css({opacity : 1.0})
                                 ctx3.css({opacity : 1.0})
-                                NotEnemy = false;
+                                setNotEnemy(false);
                                 clearInterval(interval);
                             }
                             else {
