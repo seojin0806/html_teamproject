@@ -93,7 +93,7 @@ function meteor_fall() {
 }
 
 function meteorfunc() {
-    let temp = setInterval(collision_detection, 100);
+    let temp = setInterval(meteor_collision_detection, 100);
     setTimeout(() => { clearInterval(temp) }, meteor_fall_ani_dur * 1000);
     for (let i = 0; i < 5; ++i) {
         if (i != way) $('.meteor')[i].style.display = 'block';
@@ -121,22 +121,23 @@ function clear_stage() {
         difficulty++;
     } 
 }
-function collision_detection() {
-    let hero = document.querySelector('#hero').getBoundingClientRect();
-    hero_coordinate = [[hero.left, hero.top], [hero.right, hero.bottom], [hero.right, hero.top], [hero.left, hero.bottom]];
-
+function meteor_collision_detection() {
+    let hero = document.querySelector('#Player_HitBox').getBoundingClientRect();
     for (let j = 0; j < 5; ++j) {
-        let m = document.querySelectorAll('#meteor-zone > .meteor-line > img')[j].getBoundingClientRect();
+        let m = document.querySelectorAll('.meteor')[j].getBoundingClientRect();
         let t = m.top;
         let b = m.bottom;
         let l = m.left;
         let r = m.right;
-        for (let i = 0; i < 4; ++i) {
-            if (l <= hero_coordinate[i][0] && hero_coordinate[i][0] <= r) {
-                if (t <= hero_coordinate[i][1] && hero_coordinate[i][1] <= b) {
-                    console.log('충돌발생');
-                    document.querySelectorAll('#meteor-zone > .meteor-line > img')[j].style.display = 'none';
-                    // jQuery.minusHeart(); // 체력 감소
+        if(l <= hero.left && hero.left <= r){
+            if((t <= hero.top && hero.top <= b) || (t <= hero.bottom && hero.bottom <= b)) {
+                document.querySelectorAll('.meteor')[j].style.display = 'none';
+                jQuery.minusHeart(); // 체력 감소
+            }
+        } else if(l <= hero.right && hero.right <= r) {
+            if((t <= hero.top && hero.top <= b) || (t <= hero.bottom && hero.bottom <= b)){
+                document.querySelectorAll('.meteor')[j].style.display = 'none';
+                jQuery.minusHeart(); // 체력 감소
                 }
             }
         }
