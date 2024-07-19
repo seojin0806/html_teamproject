@@ -4,7 +4,7 @@ $(document).ready(function () {
         if(jQuery.canSelect())
         {
             set_current_player(index);
-            $(this).fadeOut();
+            $(this).text("선택됨");
         }
         else{
             //구매 로직
@@ -42,6 +42,7 @@ function buy_character(){
     $('.title-content').text("");
     $('.title-gold').text(`소모 골드: ${cost}`);
     jQuery.setCost(cost);
+    jQuery.setText("charac");
     $('.deactive-modal').show(); 
     $('.modal-div').fadeIn();
 }

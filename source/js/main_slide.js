@@ -1,7 +1,7 @@
 // 처음 인덱스는 1
 let index = 1;
 $(document).ready(function () {
-    $('#select').hide();
+    show_btn();
     // 이전 버튼은 왼쪽...
     $('.before-btn').click(function (e) { 
         slide_right();
@@ -49,13 +49,12 @@ function show_btn(){
         //현재 선택 버튼을 보여줍니다..
         //만약 구매하지 않았다면...
         if(value[jQuery.getIndex()])
-            $('#select').text("SELECT");
+            $('#select').text("선택");
         else{
-            $('#select').text("BUY");
+            $('#select').text("구매");
         }
-        $('#select').show();
     }
     else{
-        $('#select').hide();
+        $('#select').text("선택됨");
     }
 }

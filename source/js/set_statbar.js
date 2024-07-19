@@ -6,8 +6,8 @@ $(document).ready(function () {
 jQuery.setStat = function(){
     console.log("스탯을 설정합니다..");
     //현재 캐릭터 정보를 가져옵니다..
-    let character_info = localStorage.getItem('character_info');
-    character_info = JSON.parse(character_info);
+    let character_info = JSON.parse(localStorage.getItem('character_info'));
+    console.log(character_info);
     let current_char = character_info[jQuery.getIndex()];
     //text hp를 설정해줍니다...
     $('#text-hp').text(`체력: ${current_char.hp}`);
