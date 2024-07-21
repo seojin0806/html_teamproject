@@ -17,6 +17,7 @@ function set_distance(){
     if(distance % 500 == 0) {
         init_stage_boss(difficulty);
     }
+    window.localStorage.setItem("result_distance",distance);
 }
 
 jQuery.setStage = function(value){
