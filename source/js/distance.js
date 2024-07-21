@@ -14,6 +14,9 @@ function set_distance(){
         jQuery.addScore(50 * stage);
         count += 50;
     }
+    if(distance % 500 == 0) {
+        init_stage_boss(difficulty);
+    }
 }
 
 jQuery.setStage = function(value){

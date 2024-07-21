@@ -3,6 +3,7 @@ var time_limit;
 var way;
 var difficulty = 1;
 
+var boss_appear_distance = 500; // 변수 값이 500이면, 500m갈 때 보스 등장
 var boss_appear_ani_dur = 0.5 ; // 보스 출현 속도 조절
 var boss_fadeout_ani_dur = 2;
 var meteor_war_ani_dur = 2 ; // 운석 경고등 시간 조절
@@ -18,7 +19,7 @@ let root = document.querySelector(':root');
 
 
 function init_stage_boss(difficulty) {
-    if (boss != null) { delete_boss(); }
+    if (boss != null) { return 0; }
     if(difficulty == null || !(0 < difficulty && difficulty < 6)) { return console.log('난이도가 1 ~ 5 사이가 아님'); }
 
     add_boss_zone(); 
