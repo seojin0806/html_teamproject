@@ -55,7 +55,7 @@ function drop_gold(monster,n){
 
         //gold 충돌 이벤트 일단은 hover로 하겠습니다.
 
-        gold.addEventListener('mouseover', () =>{
+        gold.addEventListener('click', () =>{
             var new_gold = Number(window.localStorage.getItem("gold"))+10;
             gold_inven = gold_inven + 10;
             update_gold()
@@ -115,7 +115,7 @@ function drop_gem(monster,n){
 
         //gold 충돌 이벤트 일단은 hover로 하겠습니다.
 
-        gem.addEventListener('mouseover', () =>{
+        gem.addEventListener('click', () =>{
             var new_gold = Number(window.localStorage.getItem("gold"))+30;
             gold_inven = gold_inven + 30;
             update_gold()
