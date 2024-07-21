@@ -39,8 +39,6 @@
     position: absolute;
     overflow-x: hidden;
     overflow-y: hidden;
-    top: 50%;
-    transform: translateY(-50%);
 }
 /**캐릭터들...**/
 .character{
