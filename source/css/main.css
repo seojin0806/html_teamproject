@@ -189,7 +189,7 @@ button:hover{
 }
 
 .stat-level{
-    width: 33%;
+    width: 32.9%;
     height: 100%;
     float: left;
     border: 1px solid black;
@@ -200,11 +200,15 @@ button:hover{
     /* stat-area 높이 너비 -> 510px 40px */
     border-top-left-radius: 20px;
     border-bottom-left-radius: 20px;
-    border-right: transparent;
+    
 }
 
 .stat-level:last-child{
     border-top-right-radius: 20px;
     border-bottom-right-radius: 20px;
+}
+
+.stat-level:nth-child(2){
     border-left: transparent;
+    border-right: transparent;
 }
