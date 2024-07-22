@@ -15,9 +15,59 @@ let root = document.querySelector(':root');
             root.style.setProperty('--meteor_war_ani_dur', meteor_war_ani_dur + 's');
             root.style.setProperty('--meteor_fall_ani_dur', meteor_fall_ani_dur + 's');
 });
+// div 관련
+function add_boss_zone() {
+    let boss_zone = document.createElement('div');
+    let headbody = document.createElement('div');
+    let left_arm = document.createElement('div');
+    let right_arm = document.createElement('div');
 
+    boss_zone.classList.add('boss-zone');
+    headbody.classList.add('boss-shape');
+    headbody.classList.add('headbody');
+    left_arm.classList.add('boss-shape');
+    left_arm.classList.add('left-arm');
+    right_arm.classList.add('boss-shape');
+    right_arm.classList.add('right-arm');
 
+    boss_zone.appendChild(headbody);
+    boss_zone.appendChild(left_arm);
+    boss_zone.appendChild(right_arm);
 
+    let meteor_zone = document.createElement('div');
+    meteor_zone.id = 'meteor-zone'
+    let meteor_line;
+    let meteor_warning;
+    let meteor;
+
+    for(let i = 0; i < 5; i++) {
+        meteor_line = document.createElement('div');
+        meteor_warning = document.createElement('img');
+        meteor = document.createElement('img');
+
+        meteor_line.className = 'meteor-line';
+        meteor_warning.className = 'meteor-warning';
+        meteor.className = 'meteor';
+
+        meteor_warning.setAttribute('src', '../images/Sfx/meteor-warning.png');
+        meteor.setAttribute('src', './../images/Monsters/meteor.png');
+
+        meteor_zone.appendChild(meteor_line);
+        meteor_line.appendChild(meteor_warning);
+        meteor_line.appendChild(meteor);
+    }
+
+    document.querySelector('.container').appendChild(boss_zone);
+    document.querySelector('.container').appendChild(meteor_zone);
+}
+function remove_boss_zone() {
+    let boss_zone = document.querySelector('.boss-zone');
+    let meteor_zone = document.querySelector('#meteor-zone')
+    document.querySelector('.container').removeChild(boss_zone);
+    document.querySelector('.container').removeChild(meteor_zone);
+}
+
+// boss -------------------------------------------
 function init_stage_boss(difficulty) {
     if (boss != null) { return 0; }
     if(difficulty == null || !(0 < difficulty && difficulty < 6)) { return console.log('난이도가 1 ~ 5 사이가 아님'); }
@@ -79,6 +129,32 @@ function time_limit_timer() {
         window.open('./end.html', '_self');
     }
 }
+
+function delete_boss() {
+    if(null != boss.arrow_collision_timer_id)
+        clearInterval(boss.arrow_collision_timer_id);
+    if (null != boss.attack_pattern_1_timer_id)
+        clearInterval(boss.attack_pattern_1_timer_id);
+    if (null != boss.attack_pattern_2_timer_id)
+        clearInterval(boss.attack_pattern_2_timer_id);
+    $('#time_limit').css('display', 'none');
+    boss = null;
+    time_limit = null;
+    way = null;
+    setTimeout(remove_boss_zone, boss_fadeout_ani_dur * 1000);
+}
+function clear_stage() {
+    // 보스 처치 모션 추가
+    let boss_img_tag = document.querySelector('.boss-zone');
+    boss_gold_drop();
+    boss_img_tag.classList.add('fadeout')
+    delete_boss();
+    if (difficulty < 5) {
+        difficulty++;
+    } 
+}
+
+// meteor -------------------------------------------------
 function meteor_caution() {
     for (let i = 0; i < 5; ++i) {
         if (i != way) $('.meteor-warning')[i].style.display = 'block';
@@ -109,30 +185,7 @@ function meteorfunc() {
         $('.meteor')[i].classList.add('active');
     }
 }
-
-function delete_boss() {
-    if(null != boss.arrow_collision_timer_id)
-        clearInterval(boss.arrow_collision_timer_id);
-    if (null != boss.attack_pattern_1_timer_id)
-        clearInterval(boss.attack_pattern_1_timer_id);
-    if (null != boss.attack_pattern_2_timer_id)
-        clearInterval(boss.attack_pattern_2_timer_id);
-    $('#time_limit').css('display', 'none');
-    boss = null;
-    time_limit = null;
-    way = null;
-    setTimeout(remove_boss_zone, boss_fadeout_ani_dur * 1000);
-}
-function clear_stage() {
-    // 보스 처치 모션 추가
-    let boss_img_tag = document.querySelector('.boss-zone');
-    boss_gold_drop();
-    boss_img_tag.classList.add('fadeout')
-    delete_boss();
-    if (difficulty < 5) {
-        difficulty++;
-    } 
-}
+// collision detection ---------------------------------
 function meteor_collision_detection() {
     let hero = document.querySelector('#Player_HitBox').getBoundingClientRect();
     for (let j = 0; j < 5; ++j) {
@@ -171,56 +224,6 @@ function arrow_collision_detection() {
     }
 }
 
-function add_boss_zone() {
-    let boss_zone = document.createElement('div');
-    let headbody = document.createElement('div');
-    let left_arm = document.createElement('div');
-    let right_arm = document.createElement('div');
-
-    boss_zone.classList.add('boss-zone');
-    headbody.classList.add('boss-shape');
-    headbody.classList.add('headbody');
-    left_arm.classList.add('boss-shape');
-    left_arm.classList.add('left-arm');
-    right_arm.classList.add('boss-shape');
-    right_arm.classList.add('right-arm');
-
-    boss_zone.appendChild(headbody);
-    boss_zone.appendChild(left_arm);
-    boss_zone.appendChild(right_arm);
-
-    let meteor_zone = document.createElement('div');
-    meteor_zone.id = 'meteor-zone'
-    let meteor_line;
-    let meteor_warning;
-    let meteor;
-
-    for(let i = 0; i < 5; i++) {
-        meteor_line = document.createElement('div');
-        meteor_warning = document.createElement('img');
-        meteor = document.createElement('img');
-
-        meteor_line.className = 'meteor-line';
-        meteor_warning.className = 'meteor-warning';
-        meteor.className = 'meteor';
-
-        meteor_warning.setAttribute('src', '../images/Sfx/meteor-warning.png');
-        meteor.setAttribute('src', './../images/Monsters/meteor.png');
-
-        meteor_zone.appendChild(meteor_line);
-        meteor_line.appendChild(meteor_warning);
-        meteor_line.appendChild(meteor);
-    }
-
-    document.querySelector('.container').appendChild(boss_zone);
-    document.querySelector('.container').appendChild(meteor_zone);
-}
-function remove_boss_zone() {
-    let boss_zone = document.querySelector('.boss-zone');
-    let meteor_zone = document.querySelector('#meteor-zone')
-    document.querySelector('.container').removeChild(boss_zone);
-    document.querySelector('.container').removeChild(meteor_zone);
-}
 
 //script 불러오실때 defer 붙여주세요.
 function get_difficulty(){
