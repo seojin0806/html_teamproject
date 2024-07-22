@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://code.jquery.com/jquery-3.7.1.js"></script>
+    <!-- slide 외부 라이브러리.. -->
+    <script src="js/infiniteSlide.js"></script>
+    <!--배경 슬라이더 js-->
+    <script>    
+		$(function () {
+			$('.scroll').infiniteslide({
+				direction: 'down',
+				pauseonhover: false,
+                speed : 380
+			});
+		});
+    </script>
+    <!-- json 파일 설정 -->
+    <script src="js/init.js"></script>
+    <!-- 높이 설정 -->
+    <script src="js/set_height.js"></script>
+    <!--css요소....-->
+    <link rel="stylesheet" href="css/default2.css">
+    <link rel="stylesheet" href="css/start.css"> 
+    <!--구글 폰트...-->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Staatliches&display=swap" rel="stylesheet">  
+</head>
+<body oncontextmenu="return false" ondragstart="return false" onselectstart="return false">
+    <div class="container">
+        <div class="slider-container">
+            <ul class="scroll">
+                <li>
+                    <img src="images/BackGround/01.png"></img>
+                </li>
+                <li>
+                    <img src="images/BackGround/01.png"></img>
+                </li>
+                <li>
+                    <img src="images/BackGround/01.png"></img>
+                </li>
+                <li>
+                    <img src="images/BackGround/01.png"></img>
+                </li>
+            </ul>
+        </div>
+        <img class="logo" src="images/Title/logo.png">
+        <img class="character_06" src="images/Character/character_06.png">
+        <span><a href="html/main.html" class="start">Clcik to Start...</a></span>
+    </div>
+</body>
+</html>
